@@ -1,6 +1,6 @@
 
 function Main() {
-alert("here")
+
     //Get arrays from local storage
     var arrDays = JSON.parse(localStorage.getItem("days"));
     var arrTrans = JSON.parse(localStorage.getItem("transformed"));
