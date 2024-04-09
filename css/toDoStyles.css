@@ -1,0 +1,49 @@
+@font-face {
+    
+    font-family: MouldyCheeseRegular;
+    src: url(MouldyCheeseRegular-WyMWG.ttf);
+  }
+
+h1 {
+    font-family: MouldyCheeseRegular, serif;
+    padding-top: 8%;
+   
+}
+
+.gray {
+    color: gray
+}
+
+.bold {
+    font-weight: bold;
+}
+
+#fldHoldList {
+    border: 0;
+}
+
+input[type='text']:focus {
+    outline: none;
+}
+
+li {
+    cursor: pointer;
+}
+  
+textarea:focus, input:focus{
+    outline: none;
+}
+  
+.btnCircle{
+    margin: 2px;
+}
+  
+option {
+    cursor: pointer;
+}
+
+/*option:hover {
+    color: blueviolet;
+  }*/
+  
+ 
