@@ -46,4 +46,33 @@ option {
     color: blueviolet;
   }*/
   
- 
+  .listening {
+    /*height:10px;
+    width:10px;
+    background:#F48908;
+    border: 2px solid #fff;*/
+    border-radius: 25px;
+    box-shadow: 0px 1px 5px #888888;
+    transform-origin:50% 50%;
+    transform:scale(1);
+    animation: pulse 0.6s infinite linear alternate;
+    -webkit-animation: pulse 0.6s infinite linear alternate;
+}
+@keyframes pulse {
+    to {
+        transform:scale(1.1);
+    }
+}
+@-webkit-keyframes pulse {
+    to {
+        transform:scale(1.1);
+    }
+
+      
+}
+
+#btnVoice:disabled {
+    /*background-color: red;
+    color: linen;*/
+    opacity: 1;
+  }
