@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="css/w3ColorThemes.css">
         <link rel="stylesheet" href="css/toDoStyles.css">
                 
-        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/Test.js"></script>
         <script type="text/javascript" src="js/daysCode.js"></script>
         <script type="text/javascript" src="js/voice.js"></script>
     </head>
@@ -122,10 +122,44 @@ var now = new Date();
             var tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate()+ 1, 0, 0);
             var reloadTime = tomorrow - now;
            
-            setTimeout(function(){location.reload(true);}, reloadTime);
-/*if (reloadTime < 0) {
+            setTimeout(function(){
+              
+              var arrDays = JSON.parse(localStorage.getItem("days"));
+              for(var i=0; i < arrDays.length; i++){
+                arrDays[i].checked = "false";
+              }
+              
+              localStorage.setItem("days", JSON.stringify(arrDays));  
+              location.reload(true);
+            
+            }, reloadTime);
+            
+              
+
+
+            /*if (reloadTime < 0) {
      reloadTime += 86400000; // it's after midnight, try midnight tomorrow.
 }
 setTimeout(function(){location.reload(true);}, reloadTime);
 //setTimeout(function(){location.reload(true);}, 60000);*/
+
+/*setTimeout(function(){
+  
+           
+  
+              //var obj = arrDays.find(obj => obj["todo"] === value);
+              //var indx = arr.indexOf(obj);
+
+              for(var i=0; i < arrDays.length; i++){
+                
+                arrDays[i].checked = "false";
+                
+              }
+              
+              localStorage.setItem("days", JSON.stringify(arrDays));  
+                
+  location.reload(true);}, 15000);*/
+
+
+
 </script>

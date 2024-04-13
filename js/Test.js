@@ -3,7 +3,7 @@ function Main() {
 
     //Get arrays from local storage
     var arrDays = JSON.parse(localStorage.getItem("days"));
-    var arrTrans = JSON.parse(localStorage.getItem("transformed"));
+    var arrTrans = JSON.parse(localStorage.getItem("transformed"))
     
     //Set focus and call loadList to create list on page
     document.getElementById("inpTask").focus();
@@ -25,8 +25,11 @@ function loadList(arrDays, arrTrans) {
             } 
         }
         
-        var arrToDo = td.concat(arrTrans);
-
+        if(arrTrans !=""){
+            var arrToDo = td.concat(arrTrans);
+        }
+        
+    
         for(var i = 0; i < arrToDo.length; i++){
             let obj = arrToDo[i];
              createCheckbox(obj)
@@ -85,11 +88,26 @@ function boxChecked(elt){
         
     var target = elt;
     const value = elt.value;
-    var arr = JSON.parse(localStorage.getItem("transformed"));
-    var obj = arr.find(obj => obj["todo"] === value);
-    var indx = arr.indexOf(obj);
+    var arrDays = JSON.parse(localStorage.getItem("days"));
+    var arrTransformed = JSON.parse(localStorage.getItem("transformed"));
+    //var obj = arr.find(obj => obj["todo"] === value);
+    //var indx = arr.indexOf(obj);
     var labels = document.getElementsByTagName('LABEL');
+    var found = arrDays.includes(arrDays.find(obj => obj["todo"] === value));
+    if(found == true){
+        var arr = arrDays;
+        var name = "days";
+        var obj = arr.find(obj => obj["todo"] === value);
+        var indx = arr.indexOf(obj);
         
+    } else {
+        var arr = arrTransformed;
+        var name = "transformed";
+        var obj = arr.find(obj => obj["todo"] === value);
+        var indx = arr.indexOf(obj);
+        
+    }
+    
     for (var i = 0; i < labels.length; i++) {
         if (labels[i].htmlFor == value ) {
             
@@ -97,11 +115,11 @@ function boxChecked(elt){
                 labels[i].classList.add("gray");
                 obj["checked"] = "true";
                 arr.splice(indx, 1, obj);
-                localStorage.setItem("transformed", JSON.stringify(arr));   
+                localStorage.setItem(name, JSON.stringify(arr));   
             } else { labels[i].classList.remove("gray");
             obj["checked"] = "false"
             arr.splice(indx, 1, obj);
-            localStorage.setItem("transformed", JSON.stringify(arr));  
+            localStorage.setItem(name, JSON.stringify(arr));  
             }  
         }    
     } 
@@ -155,7 +173,6 @@ function createArray(val) {
 //If the value is an empty string, alert user  
     
     var transformed = JSON.parse(localStorage.getItem("transformed"));
-    var nd = new Date().toLocaleDateString('en-us', { weekday:"long"});
     var tm = new Date().toLocaleTimeString(); // 11:18:48 AM;
     var dt = new Date().toLocaleDateString(); 
     
@@ -164,7 +181,7 @@ function createArray(val) {
             "todo": val,
             "checked": "false",
             "bold": "false",
-            "day" : nd,
+            "day" : "ongoing",
             "time" : tm,
             "date" : dt
         };
