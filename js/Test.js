@@ -217,14 +217,13 @@ function clearList() {
                 fldHoldList.removeChild(label[i]);
                 fldHoldList.removeChild(linebreak[i]);
             } else {
-                var idx = days.findIndex(i => i["todo"] === str);
+                
                 fldHoldList.removeChild(check[i]);
                 fldHoldList.removeChild(label[i]);
                 fldHoldList.removeChild(linebreak[i]);
 
                 
-                days.splice(idx, 1);
-                localStorage.setItem("days", JSON.stringify(days));
+                
 
             }
             
