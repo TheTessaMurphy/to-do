@@ -200,6 +200,7 @@ function clearList() {
 //from the array then reloads the page so the updated list appears.
     
     var transformed = JSON.parse(localStorage.getItem("transformed"));
+    var days = JSON.parse(localStorage.getItem("days"));
     var check = document.querySelectorAll("input[type='checkbox']");
     var label = document.querySelectorAll("LABEL");
     var linebreak = document.querySelectorAll("br");
@@ -216,9 +217,15 @@ function clearList() {
                 fldHoldList.removeChild(label[i]);
                 fldHoldList.removeChild(linebreak[i]);
             } else {
+                var idx = days.findIndex(i => i["todo"] === str);
                 fldHoldList.removeChild(check[i]);
                 fldHoldList.removeChild(label[i]);
                 fldHoldList.removeChild(linebreak[i]);
+
+                
+                days.splice(idx, 1);
+                localStorage.setItem("days", JSON.stringify(days));
+
             }
             
         }
