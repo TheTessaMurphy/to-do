@@ -9,6 +9,9 @@ h1 {
     padding-top: 8%;
    
 }
+body {
+    background-image: url("../images/black-felt.png");
+}
 
 .gray {
     color: gray

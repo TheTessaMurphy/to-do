@@ -9,49 +9,46 @@
         <link rel="stylesheet" href="css/w3ColorThemes.css">
         <link rel="stylesheet" href="css/toDoStyles.css">
                 
-        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/Test.js"></script>
         <script type="text/javascript" src="js/daysCode.js"></script>
         <script type="text/javascript" src="js/voice.js"></script>
     </head>
     
-    <body onload="Main()" class="w3-theme-l3">
+    <body onload="Main()" class="w3-theme-l2">
         
 
 <!--***MAIN BODY***-->
-    <div class="w3-row w3-yellow" >
-        <div id="imgContainer" class="w3-quarter w3-hide-small"><image src="images/dianthus.jpg"></image></div><!--left column-->
-        
-        <div class="w3-half w3-padding-26 w3-card-4">                                                              <!-- middle column-->
-            <div class="w3-display-container w3-padding-16 w3-theme-l2" >
-            <div class="w3-dropdown-click w3-right" style="background-color: rgba(0, 0, 0, 0);">  <!--Creates container for dropdown-->
-              <button id="btnDropDown" onclick="dropDown()" class="w3-btn btnCircle w3-circle w3-theme-d3 w3-hover-text-light-blue w3-ripple">R</button>
-              <div id="lstDays" class="w3-dropdown-content w3-bar-block w3-border" style="margin-left: -116px;">
-                <option class="w3-sand  value="" disabled selected>Select a day</option> 
-                <option id="Everyday"class="w3-sand w3-hover-text-brown" value="Everyday">Everyday</option>
-                <option id="Monday"class="w3-sand w3-hover-text-brown" value="Monday">Monday</option>
-                <option id="Tuesday"class="w3-sand w3-hover-text-brown" value="Tuesday">Tuesday</option>
-                <option id="Wednesday" class="w3-sand w3-hover-text-brown" value="Wednesday">Wednesday</option>
-                <option id="Thursday" class="w3-sand w3-hover-text-brown" value="Thursday">Thursday</option>
-                <option id="Friday" class="w3-sand w3-hover-text-brown" value="Friday">Friday</option>
-                <option id="Saturday" class="w3-sand w3-hover-text-brown" value="Saturday">Saturday</option>
-                <option id="Sunday" class="w3-sand w3-hover-text-brown" value="Sunday">Sunday</option>
-              </div>
-            </div>
-            <button id="btnClear" class="btnCircle w3-btn w3-theme-d3 w3-hover-text-cyan w3-ripple w3-right w3-circle" onclick="clearList()"><i class="fa fa-trash"></i></button>
-            <button id="btnAdd" class="btnCircle w3-btn w3-theme-d3 w3-hover-text-cyan w3-right w3-circle" onclick="getInput()" >&plus;</button>
-            <button id="btnVoice" class="btnCircle w3-btn w3-theme-d3 w3-hover-text-cyan w3-right w3-circle" ><i class="fa fa-microphone" aria-hidden="true"></i></button>
-            
-            <h1 class="w3-center w3-margin-top w3-margin-bottom">My ToDo List</h1>
-            
-            <form class="w3-container" id="myList"  >
-                <input id="inpTask" class="w3-input" type="text">
-                <fieldset id="fldHoldList" onclick="boxChecked()"></fieldset> <!--creates a space for checkboxes-->
-                <p></p>
-            </form>  
+<div class="w3-row w3-border-0 ">
+  <div class="w3-quarter w3-container w3-hide-small" ></div>
+  <div class="w3-half w3-container w3-padding-16 w3-theme-l2 w3-card-4">
+      <div class="w3-dropdown-click w3-right" style="background-color: rgba(0, 0, 0, 0);">  <!--Creates container for dropdown-->
+          <button id="btnDropDown" onclick="dropDown()" class="w3-btn btnCircle w3-circle w3-theme-d3 w3-hover-text-theme w3-ripple">R</button>
+          <div id="lstDays" class="w3-dropdown-content w3-bar-block w3-border" style="margin-left: -116px;">
+            <option class="w3-sand  value="" disabled selected>Select a day</option> 
+            <option id="Everyday"class="w3-sand w3-hover-text-brown" value="Everyday">Everyday</option>
+            <option id="Monday"class="w3-sand w3-hover-text-brown" value="Monday">Monday</option>
+            <option id="Tuesday"class="w3-sand w3-hover-text-brown" value="Tuesday">Tuesday</option>
+            <option id="Wednesday" class="w3-sand w3-hover-text-brown" value="Wednesday">Wednesday</option>
+            <option id="Thursday" class="w3-sand w3-hover-text-brown" value="Thursday">Thursday</option>
+            <option id="Friday" class="w3-sand w3-hover-text-brown" value="Friday">Friday</option>
+            <option id="Saturday" class="w3-sand w3-hover-text-brown" value="Saturday">Saturday</option>
+            <option id="Sunday" class="w3-sand w3-hover-text-brown" value="Sunday">Sunday</option>
+          </div>
         </div>
-        </div>
+        <button id="btnClear" class="btnCircle w3-btn w3-theme-d3 w3-hover-text-theme w3-ripple w3-right w3-circle" onclick="clearList()"><i class="fa fa-trash"></i></button>
+        <button id="btnAdd" class="btnCircle w3-btn w3-theme-d3 w3-hover-text-theme w3-right w3-circle" onclick="getInput()" >&plus;</button>
+        <button id="btnVoice" class="btnCircle w3-btn w3-theme-d3 w3-hover-text-theme w3-right w3-circle" ><i class="fa fa-microphone" aria-hidden="true"></i></button>
         
-        <div class="w3-quarter w3-hide-small"></div>                                                                                                <!--right column-->      
+        <h1 class="w3-center w3-margin-top w3-margin-bottom">My ToDo List</h1>
+        
+        <form class="w3-container" id="myList"  >
+            <input id="inpTask" class="w3-input" type="text">
+            <fieldset id="fldHoldList" onclick="boxChecked()"></fieldset> <!--creates a space for checkboxes-->
+            <p></p>
+        </form>  
+  </div>
+  <div class="w3-quarter w3-container w3-hide-small" ></div>
+</div>                                                                                           <!--right column-->      
     
 <!--***MODAL***-->
     <div id="day" class="w3-container w3-modal">
@@ -71,7 +68,7 @@
         </ul>
       </div>
       
-      <footer class="w3-container"><p></p></footer>
+      <!--<footer class="w3-container"><p></p></footer>-->
       </div>
     </div>
 
@@ -122,10 +119,44 @@ var now = new Date();
             var tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate()+ 1, 0, 0);
             var reloadTime = tomorrow - now;
            
-            setTimeout(function(){location.reload(true);}, reloadTime);
-/*if (reloadTime < 0) {
+            setTimeout(function(){
+              
+              var arrDays = JSON.parse(localStorage.getItem("days"));
+              for(var i=0; i < arrDays.length; i++){
+                arrDays[i].checked = "false";
+              }
+              
+              localStorage.setItem("days", JSON.stringify(arrDays));  
+              location.reload(true);
+            
+            }, reloadTime);
+            
+              
+
+
+            /*if (reloadTime < 0) {
      reloadTime += 86400000; // it's after midnight, try midnight tomorrow.
 }
 setTimeout(function(){location.reload(true);}, reloadTime);
 //setTimeout(function(){location.reload(true);}, 60000);*/
+
+/*setTimeout(function(){
+  
+           
+  
+              //var obj = arrDays.find(obj => obj["todo"] === value);
+              //var indx = arr.indexOf(obj);
+
+              for(var i=0; i < arrDays.length; i++){
+                
+                arrDays[i].checked = "false";
+                
+              }
+              
+              localStorage.setItem("days", JSON.stringify(arrDays));  
+                
+  location.reload(true);}, 15000);*/
+
+
+
 </script>
