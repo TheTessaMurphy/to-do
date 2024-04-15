@@ -14,9 +14,9 @@
 .w3-theme-action {color:#fff !important; background-color:#224d67 !important}
 
 .w3-theme {color:#fff !important; background-color:#4f97c4 !important}
-.w3-text-theme {color:#4f97c4 !important}
+.w3-text-theme {color:#f4f9fb !important}
 .w3-border-theme {border-color:#4f97c4 !important}
-
+.w3-check {accent-color: #4f97c4!important; }
 .w3-hover-theme:hover {color:#fff !important; background-color:#4f97c4 !important}
 .w3-hover-text-theme:hover {color:#b9d6e8 !important}
 .w3-hover-border-theme:hover {border-color:#4f97c4 !important}

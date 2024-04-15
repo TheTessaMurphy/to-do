@@ -92,12 +92,12 @@ option {
    
     
 }
-input[type=checkbox] {
+/*input[type=checkbox] {
     accent-color: #c1391e;
     border-color: #c1391e !important;
 
-  }
+  }*/
 
-  .w3-check {
-    border-color: #c1391e !important; 
-  }
+.w3-check {
+    border-radius: 50%;
+} 
