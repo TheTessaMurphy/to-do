@@ -26,9 +26,10 @@ const inpTask = document.getElementById('inpTask');
     
         // Start recognition when the button is clicked
         recognition.start();
-        btnVoice.classList.remove("w3-theme-d3") 
+        btnVoice.classList.remove("w3-theme-d4") 
         btnVoice.classList.add("w3-theme-d1");
         btnVoice.classList.add("listening");
+        btnVoice.classList.add("w3-listening-text")
         btnVoice.disabled = true;
         document.getElementById("inpTask").focus();
             
@@ -36,7 +37,8 @@ const inpTask = document.getElementById('inpTask');
         recognition.onend = () => {
         btnVoice.classList.remove("listening");
         btnVoice.classList.remove("w3-theme-d1") 
-        btnVoice.classList.add("w3-theme-d3");
+        btnVoice.classList.remove("w3-listening-text")
+        btnVoice.classList.add("w3-theme-d4");
         btnVoice.disabled = false;
         };
     } else {
