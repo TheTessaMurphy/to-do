@@ -7,10 +7,11 @@
 h1 {
     font-family: MouldyCheeseRegular, serif;
     padding-top: 8%;
+    padding-bottom: 4%;
    
 }
 body {
-    background-image: url("../images/black-felt.png");
+    background-image: url("../images/natural-paper.png");
 }
 
 .gray {
@@ -78,4 +79,19 @@ option {
     /*background-color: red;
     color: linen;*/
     opacity: 1;
+  }
+
+.w3-half{
+   background-image: url("../images/brilliant.png");
+   background:#f6ccba;
+    
+}
+
+.ddContainer{
+    background-image: url("../images/natural-paper.png");
+   
+    
+}
+input[type=checkbox] {
+    accent-color: #c1391e;
   }
