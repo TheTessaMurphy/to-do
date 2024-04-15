@@ -62,7 +62,8 @@ function createCheckbox(obj) {
     var label = document.createElement("LABEL");
         
     checkboxes.setAttribute("type", "checkbox");
-    checkboxes.setAttribute("class", "w3-check");
+    checkboxes.classList.add("w3-check", "w3-yellow" );
+    
     checkboxes.value=obj["todo"];
     checkboxes.checked=JSON.parse(obj["checked"]);
     
