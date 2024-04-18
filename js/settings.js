@@ -23,15 +23,33 @@ function dropSettings() {
         }
     }  
     
-    function getColor(elem){
-    //Changes the themes.css to chosen theme
-    //gets value from radio button  
-   alert(elem)
-        var newStyle= document.getElementById('styles');
-        var name = "css/" + elem + "ColorThemes.css"
-        newStyle.setAttribute("href", name);
-    }
+    function dropColor() {
             
+        var x = document.getElementById("lstColor");
+        
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+        } else { 
+            var x = document.getElementById("lstColor");
+            x.className = x.className.replace(" w3-show", "");
+            
+        }
+    }
+     
+    
+    function getColor(elem){
+                
+                
+        var toRem= document.getElementById('styles');
+        var value = toRem.getAttribute("href"); 
+        var name = "css/" + elem + "ColorThemes.css"
+        toRem.setAttribute("href", name);
+        alert(elem)
+        //toRem.parentNode.removeChild(toRem)
+        //document.getElementById('styles').setAttribute("href", name");
+
+    }
+    
     function setRadio(){
     
         /*Gets id of current themes.css from local storage.
