@@ -9,7 +9,7 @@
     <link id="styles" rel="stylesheet" href="css/blueColorThemes.css">
     <link rel="stylesheet" href="css/toDoStyles.css">
     </head>
-    <body>
+    <body onload="setRadio()">
 
         
             
@@ -20,70 +20,110 @@
                     <option id="about"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="about">About</option>
                     <option id="how-To"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="how-to">How-To</option>
                     <div class="w3-dropdown-click">
-                        <option onclick="dropColor()" id="colors" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="colors">Colors</option>
-                        <div id="lstColor" class="w3-dropdown-content w3-bar-block w3-border" style="margin-left: -116px;">
-                            <input class="w3-radio" type="radio" name="color" value="blue" checked>
-                            <label>Blue</label><br>
-                            <input class="w3-radio" type="radio" name="color" value="peach" >
-                            <label>Peach</label><br>
-                            <input class="w3-radio" type="radio" name="color" value="gold" >
-                            <label>Goldenrod</label>
-                        </div> 
-
+                        <option onclick="dropColor()" id="colors" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme " value="colors">Colors</option>
+                        <div id="ddColor" class="w3-dropdown-content w3-theme-l5 w3-bar-block w3-border ">
+                            <div id="lstColor" >
+                                <input id="rdBlue" class="w3-radio" type="radio" name="color" value="blue" onclick="getColor(value)" checked>
+                                <label for="rdBlue">Blue</label><br>
+                                <input id="rdPeach" class="w3-radio" type="radio" name="color" value="peach" onclick="getColor(value)"  >
+                                <label for="rdPeach">Peach</label><br>
+                                <input id="rdGold" class="w3-radio" type="radio" name="color" value="gold" onclick="getColor(value)">
+                                <label for="rdGold">Goldenrod</label>
+                            </div>
+                            <div class="w3-center">
+                                <p></p>
+                                <button id="btnSaveColor"class="w3-btn w3-padding-small w3-theme-d4 w3-ripple w3-round-xxlarge">save</button>
+                                <button id="btnCloseColor" class="w3-btn w3-padding-small w3-theme-d4 w3-ripple  w3-round-xxlarge">close</button>
+                                <p></p>
+                            </div>     
+                    </div>
+                        
+                        
                   </div>
                 </div>
          </div>
                 
-
                 
         <script>
-            //Opens modal to selected day when day is clicked
-           /* document.getElementById("lstSettings").addEventListener("click", function() {
-            openColors(event.target.id);
-            });*/
-            document.getElementById("lstColor").addEventListener("click", function() {
-                getColor(event.target.value);
-            });
+        
+        //LISTENING EVENTS
+        
+        //Saves id of chosen radio button to local storage and closes dialog
+        document.getElementById("btnSaveColor").addEventListener("click", function() {
+        var elem = document.getElementsByClassName("w3-radio");
+            for(i = 0; i < elem.length; i++){
+                if(elem[i].checked){
+                    var colorID = elem[i].id;
+                    localStorage.setItem("colorID", colorID);
+                }
+            }
             
-            function dropSettings() {
+        var x = document.getElementById("lstSettings");
+        x.className = x.className.replace(" w3-show", "")   
+                
+        });
+        
+        //Closes dialog without saving
+        document.getElementById("btnCloseColor").addEventListener("click", function() {
             var x = document.getElementById("lstSettings");
-                if (x.className.indexOf("w3-show") == -1) {
-                    x.className += " w3-show";
-                } else { 
-                    var x = document.getElementById("lstSettings");
-                    x.className = x.className.replace(" w3-show", "");
-                }
-            }
+            x.className = x.className.replace("w3-show", "")   
+        });
 
-            function dropColor() {
+    //FUNCTIONS
+    
+    
+    function dropSettings() {
+    //opens and closes the settings dialog
+        var x = document.getElementById("lstSettings");
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+        } else { 
+            var x = document.getElementById("lstSettings");
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+
+    
+    function dropColor() {
+    //Opens and closes the color list dialog
+    
+        var x = document.getElementById("ddColor");
+        
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += "w3-show";
+        } else { 
+            var x = document.getElementById("ddColor");
+            x.className = x.className.replace("w3-show", "");
+        }
+    }  
+    
+    function getColor(elem){
+    //Changes the themes.css to chosen theme
+    //gets value from radio button  
+    
+        var newStyle= document.getElementById('styles');
+        var value = newStyle.getAttribute("href"); 
+        var name = "css/" + elem + "ColorThemes.css"
+        
+        newStyle.setAttribute("href", name);
+    }
             
-                var x = document.getElementById("lstColor");
-                
-                if (x.className.indexOf("w3-show") == -1) {
-                    x.className += " w3-show";
-                } else { 
-                    var x = document.getElementById("lstColor");
-                    x.className = x.className.replace(" w3-show", "");
-                    alert("here")
-                }
-            }  
-            
-            
-            function getColor(elem){
-                
-                
-                var toRem= document.getElementById('styles');
-                var value = toRem.getAttribute("href"); 
-                var name = "css/" + elem + "ColorThemes.css"
-                toRem.setAttribute("href", name);
-                alert(elem)
-                //toRem.parentNode.removeChild(toRem)
-                //document.getElementById('styles').setAttribute("href", name");
+    function setRadio(){
+    /*Gets id of current themes.css from local storage.
+    Gets the value of that id. Creates the name of the style sheet
+    and sets it.*/
+    
+        var newStyle= document.getElementById('styles');
+        var colorID = localStorage.getItem("colorID");
+        var radiobtn = document.getElementById(colorID);
+        var value = radiobtn.value;
+        var name = "css/" + value + "ColorThemes.css"
+        
+        newStyle.setAttribute("href", name);
+        radiobtn.checked = true;
+    }
 
-            }
-
-
-        </script>
+     </script>
         
     </body>
     
