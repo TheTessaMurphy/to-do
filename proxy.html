@@ -6,12 +6,13 @@
 
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/blueColorThemes.css">
+        <link id="styles" rel="stylesheet" href="css/blueColorThemes.css">
         <link rel="stylesheet" href="css/toDoStyles.css">
                 
         <script type="text/javascript" src="js/Test.js"></script>
         <script type="text/javascript" src="js/daysCode.js"></script>
         <script type="text/javascript" src="js/voice.js"></script>
+        <script type="text/javascript" src="js/settings.js"></script>
     </head>
     
     <body onload="Main()" class= "w3-theme-l2" >
@@ -22,6 +23,29 @@
   <div class="w3-quarter w3-container w3-hide-small" ></div>
   <div class=" w3-theme-l5 w3-half w3-container w3-padding-16 w3-card-4">
     <div class="buttonContainer w3-theme-l3 w3-right w3-padding w3-round-xxlarge">
+      
+      <div class="w3-dropdown-click w3-right" style="background-color: rgba(0, 0, 0, 0);">  <!--Creates container for dropdown-->
+        <button id="btnSettings" onclick="dropSettings()" class="w3-btn btnCircle w3-circle w3-theme-d4 w3-hover-text-theme w3-ripple">
+          <i class="fa fa-cog" aria-hidden="true"></i></button>
+        <div id="lstSettings" class="w3-dropdown-content w3-bar-block w3-border" style="margin-left: -116px;">
+          <option id="about"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="about">About</option>
+          <option id="how-To"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="how-to">How-To</option>
+          <div class="w3-dropdown-click">
+            <option onclick="dropColor()" id="colors" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="colors">Colors</option>
+            <div id="lstColor" class="w3-dropdown-content w3-bar-block w3-border">
+              <input class="w3-radio" type="radio" name="color" value="blue" onclick="getColor(value)" checked>Blue<br>
+              <input class="w3-radio" type="radio" name="color" value="peach" onclick="getColor(value)">Peach<br>
+              <input class="w3-radio" type="radio" name="color" value="gold" onclick="getColor(value)">Goldenrod<br>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+      
       <div class="w3-dropdown-click w3-right" style="background-color: rgba(0, 0, 0, 0);">  <!--Creates container for dropdown-->
         
         <button id="btnDropDown" onclick="dropDown()" class="w3-btn btnCircle w3-circle w3-theme-d4 w3-hover-text-theme w3-ripple"><i class="fa fa-repeat" aria-hidden="true"></i></button>
@@ -118,6 +142,22 @@ document.getElementById("enterTask").addEventListener("change", getModalInput);
 document.getElementById("btnVoice").addEventListener("click", function() {
     getVoice(event.target.id);
 });
+
+
+
+function dropColor() {
+            
+            var x = document.getElementById("lstColor");
+            
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else { 
+                var x = document.getElementById("lstColor");
+                x.className = x.className.replace(" w3-show", "");
+                
+            }
+        }  
+
 
 //Every morning at midnight, page reloads with new day
 var now = new Date();
