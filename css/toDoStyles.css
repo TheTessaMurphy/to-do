@@ -96,7 +96,7 @@ option {
 
 .w3-half{
    background-image: url("../images/brilliant.png");
-   
+   background:#f6ccba;
     
 }
 
@@ -114,11 +114,3 @@ option {
 .w3-check {
     border-radius: 50%;
 } 
-
-.hidden {
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s 2s, opacity 2s linear;
-  }
-
-  

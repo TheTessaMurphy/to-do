@@ -6,7 +6,7 @@
 
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/goldColorThemes.css">
+        <link rel="stylesheet" href="css/blueColorThemes.css">
         <link rel="stylesheet" href="css/toDoStyles.css">
                 
         <script type="text/javascript" src="js/Test.js"></script>
@@ -123,9 +123,7 @@ document.getElementById("btnVoice").addEventListener("click", function() {
 var now = new Date();
             var tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate()+ 1, 0, 0);
             var reloadTime = tomorrow - now;
-            if (millisTill10 < 0) {
-            millisTill10 += 86400000; // it's after 10am, try 10am tomorrow.
-            }
+           
             setTimeout(function(){
               
               var arrDays = JSON.parse(localStorage.getItem("days"));
