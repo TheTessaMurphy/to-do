@@ -6,12 +6,13 @@
 
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/blueColorThemes.css">
+        <link id="styles" rel="stylesheet" href="css/blueColorThemes.css">
         <link rel="stylesheet" href="css/toDoStyles.css">
                 
         <script type="text/javascript" src="js/Test.js"></script>
         <script type="text/javascript" src="js/daysCode.js"></script>
         <script type="text/javascript" src="js/voice.js"></script>
+        <script type="text/javascript" src="js/settings.js"></script>
     </head>
     
     <body onload="Main()" class= "w3-theme-l2" >
@@ -22,9 +23,35 @@
   <div class="w3-quarter w3-container w3-hide-small" ></div>
   <div class=" w3-theme-l5 w3-half w3-container w3-padding-16 w3-card-4">
     <div class="buttonContainer w3-theme-l3 w3-right w3-padding w3-round-xxlarge">
+   
+      <!***SETTINGS***-->  
       <div class="w3-dropdown-click w3-right" style="background-color: rgba(0, 0, 0, 0);">  <!--Creates container for dropdown-->
-        
-        <button id="btnDropDown" onclick="dropDown()" class="w3-btn btnCircle w3-circle w3-theme-d4 w3-hover-text-theme w3-ripple"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+        <button id="btnSettings" onclick="dropSettings()" class="w3-btn btnCircle w3-circle w3-theme-d4 w3-hover-text-theme w3-ripple">
+          <i class="fa fa-cog" aria-hidden="true"></i></button>
+        <div id="lstSettings" class="w3-dropdown-content w3-bar-block w3-border" style="margin-left: -116px;">
+          <option id="about"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="about">About</option>
+          <option id="how-To"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="how-to">How-To</option>
+          <div class="w3-dropdown-click">
+      <!--***Colors***-->      
+            <option onclick="dropColor()" id="colors" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="colors">Colors</option>
+            <div id="lstColor" class="w3-dropdown-content w3-bar-block w3-border w3-theme-l5">
+              <input id="rdBlue" class="w3-radio" type="radio" name="color" value="blue" onclick="getColor(value)" checked>Blue<br>
+              <input id="rdPeach" class="w3-radio" type="radio" name="color" value="peach" onclick="getColor(value)">Peach<br>
+              <input id="rdGold" class="w3-radio" type="radio" name="color" value="gold" onclick="getColor(value)">Goldenrod<br>
+              <p></p>
+              <div class="w3-center">
+                <button id="btnSave" class="w3-btn w3-ripple  w3-theme-d4 w3-round-xxlarge w3-small">save</button>
+                <button id="btnClose" class="w3-btn w3-ripple  w3-theme-d4 w3-round-xxlarge w3-small">close</button>
+                <p></p>
+              </div>  
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--RECURRING DAYS-->  
+        <div class="w3-dropdown-click w3-right" style="background-color: rgba(0, 0, 0, 0);">  <!--Creates container for dropdown-->
+          <button id="btnDropDown" onclick="dropDown()" class="w3-btn btnCircle w3-circle w3-theme-d4 w3-hover-text-theme w3-ripple"><i class="fa fa-repeat" aria-hidden="true"></i></button>
           <div id="lstDays" class="w3-dropdown-content w3-bar-block w3-border" style="margin-left: -116px;">
             <option class="w3-theme-l5"  value="" disabled selected>Select a day</option> 
             <option id="Everyday"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Everyday">Everyday</option>
@@ -37,15 +64,17 @@
             <option id="Sunday" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Sunday">Sunday</option>
           </div>
         </div>
+      <!--***VOICE, DELETE, AND ADD-->  
         <button id="btnVoice" class="btnCircle w3-btn w3-theme-d4 w3-hover-text-theme w3-right w3-circle" ><i class="fa fa-microphone" aria-hidden="true"></i></button>  
         <button id="btnClear" class="btnCircle w3-btn w3-theme-d4 w3-hover-text-theme w3-ripple w3-right w3-circle" onclick="clearList()"><i class="fa fa-trash"></i></button>
         <button id="btnAdd" class="btnCircle w3-btn w3-theme-d4 w3-hover-text-theme w3-right w3-circle" onclick="getInput()" ><i class="fa fa-plus" aria-hidden="true"></i></button>  
     </div>
     
-        
+      <!--****HEADING***-->  
         <h1 class="w3-center w3-margin-top w3-margin-bottom w3-theme-d5 w3-round-xxlarge"><span class="w3-theme-l1" style="background-clip: text;
           -webkit-background-clip: text;"><span class="fontStuffClip" >My ToDo List</span></span></h1>
-        
+      
+      <!--***TEXT INPUT AND CONTAINER FOR CHECKBOXES-->
         <form class="w3-container" id="myList"  >
             <input id="inpTask" class="w3-input w3-round-xxlarge w3-border w3-border-theme" type="text">
             <fieldset id="fldHoldList" onclick="boxChecked()"></fieldset> <!--creates a space for checkboxes-->
@@ -59,7 +88,7 @@
     <div id="day" class="w3-container w3-modal">
       <div class="w3-container w3-modal-content">
         <header class="w3-container"> 
-          <button onclick="document.getElementById('day').style.display='none'" class="btnCircle w3-btn w3-circle w3-teal w3-ripple w3-medium w3-display-topright">&times;</button>
+          <button onclick="document.getElementById('day').style.display='none'" class="btnCircle w3-btn w3-circle w3-theme-d4 w3-ripple w3-medium w3-display-topright">&times;</button>
           <h2 id="dayText"></h2>
           <input type="text" id="enterTask" class="w3-input w3-border" placeholder="Enter Task"  >
         </header>
@@ -114,10 +143,51 @@ document.getElementById("modalList").addEventListener("click", function() {
 //Adds input from input box to list
 document.getElementById("enterTask").addEventListener("change", getModalInput);
 
+//***VOICE***/
 //Starts listening
 document.getElementById("btnVoice").addEventListener("click", function() {
     getVoice(event.target.id);
 });
+
+//***SETTINGS***/
+document.getElementById("btnSave").addEventListener("click", function() {
+  
+  var y = document.getElementById("lstColor")
+  var x = document.getElementById("lstSettings");
+  var radioList = y.querySelectorAll("input[type='radio']");
+  for(i=0; i< radioList.length; i++){
+    if(radioList[i].checked){
+      var colorID = radioList[i].id;
+      localStorage.setItem("colorID", colorID);
+    }
+  }
+  y.className = y.className.replace(" w3-show", "");
+  x.className = x.className.replace(" w3-show", "");
+});
+
+document.getElementById("btnClose").addEventListener("click", function() {
+  var y = document.getElementById("lstColor")
+  var x = document.getElementById("lstSettings");
+  
+  y.className = y.className.replace(" w3-show", "");
+  x.className = x.className.replace("w3-show", "");                 
+});
+
+
+
+/*function dropColor() {
+            
+            var x = document.getElementById("lstColor");
+            
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else { 
+                var x = document.getElementById("lstColor");
+                x.className = x.className.replace(" w3-show", "");
+                
+            }
+        }  */
+
 
 //Every morning at midnight, page reloads with new day
 var now = new Date();

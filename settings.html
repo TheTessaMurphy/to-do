@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>settings</title>
+     
+    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link id="styles" rel="stylesheet" href="css/blueColorThemes.css">
+    <link rel="stylesheet" href="css/toDoStyles.css">
+    </head>
+    <body>
+
+        
+            
+              <div class="w3-dropdown-click w3-right" style="background-color: rgba(0, 0, 0, 0);">  <!--Creates container for dropdown-->
+                
+                <button id="btnSettings" onclick="dropSettings()" class="w3-btn btnCircle w3-circle w3-theme-d4 w3-hover-text-theme w3-ripple">
+                    <i class="fa fa-cog" aria-hidden="true"></i></button>
+                  <div id="lstSettings" class="w3-dropdown-content w3-bar-block w3-border" style="margin-left: -116px;">
+                    <option id="about"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="about">About</option>
+                    <option id="how-To"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="how-to">How-To</option>
+                    <div class="w3-dropdown-click">
+                        <option onclick="dropColor()" id="colors" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="colors">Colors</option>
+                        <div id="lstColor" class="w3-dropdown-content w3-bar-block w3-border" style="margin-left: -116px;">
+                            <input class="w3-radio" type="radio" name="color" value="blue" checked>
+                            <label>Blue</label><br>
+                            <input class="w3-radio" type="radio" name="color" value="peach" >
+                            <label>Peach</label><br>
+                            <input class="w3-radio" type="radio" name="color" value="gold" >
+                            <label>Goldenrod</label>
+                        </div> 
+
+                  </div>
+                </div>
+         </div>
+                
+
+                
+        <script>
+            //Opens modal to selected day when day is clicked
+           /* document.getElementById("lstSettings").addEventListener("click", function() {
+            openColors(event.target.id);
+            });*/
+            document.getElementById("lstColor").addEventListener("click", function() {
+                getColor(event.target.value);
+            });
+            
+            function dropSettings() {
+            var x = document.getElementById("lstSettings");
+                if (x.className.indexOf("w3-show") == -1) {
+                    x.className += " w3-show";
+                } else { 
+                    var x = document.getElementById("lstSettings");
+                    x.className = x.className.replace(" w3-show", "");
+                }
+            }
+
+            function dropColor() {
+            
+                var x = document.getElementById("lstColor");
+                
+                if (x.className.indexOf("w3-show") == -1) {
+                    x.className += " w3-show";
+                } else { 
+                    var x = document.getElementById("lstColor");
+                    x.className = x.className.replace(" w3-show", "");
+                    alert("here")
+                }
+            }  
+            
+            
+            function getColor(elem){
+                
+                
+                var toRem= document.getElementById('styles');
+                var value = toRem.getAttribute("href"); 
+                var name = "css/" + elem + "ColorThemes.css"
+                toRem.setAttribute("href", name);
+                alert(elem)
+                //toRem.parentNode.removeChild(toRem)
+                //document.getElementById('styles').setAttribute("href", name");
+
+            }
+
+
+        </script>
+        
+    </body>
+    
+</html>
