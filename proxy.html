@@ -32,11 +32,16 @@
           <option id="how-To"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="how-to">How-To</option>
           <div class="w3-dropdown-click">
             <option onclick="dropColor()" id="colors" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="colors">Colors</option>
-            <div id="lstColor" class="w3-dropdown-content w3-bar-block w3-border">
-              <input class="w3-radio" type="radio" name="color" value="blue" onclick="getColor(value)" checked>Blue<br>
-              <input class="w3-radio" type="radio" name="color" value="peach" onclick="getColor(value)">Peach<br>
-              <input class="w3-radio" type="radio" name="color" value="gold" onclick="getColor(value)">Goldenrod<br>
-            
+            <div id="lstColor" class="w3-dropdown-content w3-bar-block w3-border w3-theme-l5">
+              <input id="rdBlue" class="w3-radio" type="radio" name="color" value="blue" onclick="getColor(value)" checked>Blue<br>
+              <input id="rdPeach" class="w3-radio" type="radio" name="color" value="peach" onclick="getColor(value)">Peach<br>
+              <input id="rdGold" class="w3-radio" type="radio" name="color" value="gold" onclick="getColor(value)">Goldenrod<br>
+              <p></p>
+              <div class="w3-center">
+                <button id="btnSave" class="w3-btn w3-ripple  w3-theme-d4 w3-round-xxlarge w3-small">save</button>
+                <button id="btnClose" class="w3-btn w3-ripple  w3-theme-d4 w3-round-xxlarge w3-small">close</button>
+                <p></p>
+              </div>  
             </div>
           </div>
         </div>
@@ -138,9 +143,35 @@ document.getElementById("modalList").addEventListener("click", function() {
 //Adds input from input box to list
 document.getElementById("enterTask").addEventListener("change", getModalInput);
 
+//***VOICE***/
 //Starts listening
 document.getElementById("btnVoice").addEventListener("click", function() {
     getVoice(event.target.id);
+});
+
+//***SETTINGS***/
+document.getElementById("btnSave").addEventListener("click", function() {
+  
+  var y = document.getElementById("lstColor")
+  var radioList = y.querySelectorAll("input[type='radio']");
+  for(i=0; i< radioList.length; i++){
+    if(radioList[i].checked){
+      var colorID = radioList[i].id;
+      localStorage.setItem("colorID", colorID);
+    }
+  }
+  
+  
+  var x = document.getElementById("lstSettings");
+                  
+  x.className = x.className.replace("w3-show", "");
+});
+
+document.getElementById("btnClose").addEventListener("click", function() {
+  var x = document.getElementById("lstSettings");
+  
+  var colorID = localStorage.getItem("colorID"); 
+  x.className = x.className.replace("w3-show", "");                 
 });
 
 

@@ -44,12 +44,12 @@ function dropSettings() {
         var value = toRem.getAttribute("href"); 
         var name = "css/" + elem + "ColorThemes.css"
         toRem.setAttribute("href", name);
-        alert(elem)
+       
         //toRem.parentNode.removeChild(toRem)
         //document.getElementById('styles').setAttribute("href", name");
 
     }
-    
+
     function setRadio(){
     
         /*Gets id of current themes.css from local storage.
