@@ -13,6 +13,7 @@
         <script type="text/javascript" src="js/daysCode.js"></script>
         <script type="text/javascript" src="js/voice.js"></script>
         <script type="text/javascript" src="js/settings.js"></script>
+        <script type="text/javascript" src="js/confetti.min.js"></script>
     </head>
     
     <body onload="Main()" class= "w3-theme-l2" >
@@ -122,7 +123,12 @@ inpTask.addEventListener("keypress", function(event) {
 
 //Adds gray class to list item when checked. 
 document.getElementById("fldHoldList").addEventListener("click", function() {
-    boxChecked(event.target);
+  
+  
+ 
+
+  
+  boxChecked(event.target);
 });
 
 //Adds bold class to label when clicked
@@ -232,6 +238,9 @@ setTimeout(function(){location.reload(true);}, reloadTime);
                 
   location.reload(true);}, 15000);*/
 
-
+  
+        </script>
+        
+    </body>
 
 </script>

@@ -39,7 +39,8 @@ function loadList(arrDays, arrTrans) {
         
     //runs through when page loads or reloads and adds checks and bold.  
     var checkbox = document.querySelectorAll("input[type='checkbox']");
-    var labels = document.getElementsByTagName('LABEL');
+    var labels = document.querySelectorAll(".toDoLabel");
+    
     var nd = new Date().toLocaleDateString('en-us', { weekday:"long"});
     for (var i = 0; i < arrToDo.length; i++){
         
@@ -50,7 +51,7 @@ function loadList(arrDays, arrTrans) {
         }
     
         if (obj["bold"]=="true"){
-            
+           
             labels[i].classList.add("bold");
         }
     } 
@@ -72,7 +73,8 @@ function createCheckbox(obj) {
     checkboxes.checked=JSON.parse(obj["checked"]);
     
     label.htmlFor = obj["todo"];
-    
+    label.classList.add("toDoLabel");
+
     fldHoldList.appendChild(checkboxes);
     fldHoldList.appendChild(label);
     label.appendChild(document.createTextNode(" "));
@@ -112,13 +114,30 @@ function boxChecked(elt){
     
     for (var i = 0; i < labels.length; i++) {
         if (labels[i].htmlFor == value ) {
-            
+             
             if(target.checked){
                 labels[i].classList.add("gray");
                 obj["checked"] = "true";
+                
+                const confetti = new Confetti("fldHoldList");
+
+                // Confetti configuration
+                 confetti.setCount(75);
+                 confetti.setCount(100);
+                 confetti.setSize(.7);
+                 confetti.setPower(15);
+                 confetti.setFade(true);  
+                 confetti.destroyTarget(false);          
+                
+                
+                
                 arr.splice(indx, 1, obj);
                 localStorage.setItem(name, JSON.stringify(arr));   
             } else { labels[i].classList.remove("gray");
+           
+            
+            
+            
             obj["checked"] = "false"
             arr.splice(indx, 1, obj);
             localStorage.setItem(name, JSON.stringify(arr));  
