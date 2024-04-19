@@ -1,16 +1,20 @@
 function dropSettings() {
     //opens and closes the settings dialog
         var x = document.getElementById("lstSettings");
+        
         if (x.className.indexOf("w3-show") == -1) {
             x.className += " w3-show";
         } else { 
             var x = document.getElementById("lstSettings");
+            var y = document.getElementById("lstColor");
+            y.className = y.className.replace(" w3-show", "");
             x.className = x.className.replace(" w3-show", "");
+           
         }
     }
 
     
-    function dropColor() {
+   /* function dropColor() {
     //Opens and closes the color list dialog
     
         var x = document.getElementById("ddColor");
@@ -21,7 +25,7 @@ function dropSettings() {
             var x = document.getElementById("ddColor");
             x.className = x.className.replace("w3-show", "");
         }
-    }  
+    }  */
     
     function dropColor() {
             
