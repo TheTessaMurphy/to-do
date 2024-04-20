@@ -89,9 +89,21 @@ function boxChecked(elt){
     // if the checkbox is checked, a class is added to its label
     // that turns the text gray. If checkbox is unchecked, the class is removed
     // the value in the object is changed and the array saved to local storage      
+    if(elt.checked == false){
     
+        const confetti = new Confetti("fldHoldList");
+
+        // Confetti configuration
+        confetti.setCount(75);
+        confetti.setCount(100);
+        confetti.setSize(.7);
+        confetti.setPower(15);
+        confetti.setFade(true);  
+        confetti.destroyTarget(false);}
     var target = elt;
     const value = elt.value;
+    
+    
     var arrDays = JSON.parse(localStorage.getItem("days"));
     var arrTransformed = JSON.parse(localStorage.getItem("transformed"));
     //var obj = arr.find(obj => obj["todo"] === value);
@@ -116,12 +128,21 @@ function boxChecked(elt){
         if (labels[i].htmlFor == value ) {
              
             if(target.checked){
-                labels[i].classList.add("gray");
+                
+                
+              
+
+
+
+
+
+
                 obj["checked"] = "true";
                 arr.splice(indx, 1, obj);
                 localStorage.setItem(name, JSON.stringify(arr));   
             } else { labels[i].classList.remove("gray");
-                obj["checked"] = "false"
+           
+            obj["checked"] = "false"
                 arr.splice(indx, 1, obj);
                 localStorage.setItem(name, JSON.stringify(arr));  
             }  

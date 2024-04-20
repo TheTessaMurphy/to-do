@@ -11,20 +11,24 @@
     <body>
 
         <main>
-            <div id="fldHoldList">Click me</div>
+            <input type="checkbox" id="fldHoldList">Click me
         </main>
 
         <script>
 
-
+//document.getElementById("fldHoldList").addEventListener("click", function() {
+//alert(event.target.value)
+//  confetti();
+//});
 
   
   
  
 
-  
+ 
+    alert("here")
 
-const confetti = new Confetti("fldHoldList");
+    const confetti = new Confetti("fldHoldList");
 
 // Confetti configuration
 confetti.setCount(75);
@@ -33,8 +37,13 @@ confetti.setSize(.7);
 confetti.setPower(15);
 confetti.setFade(true);  
 confetti.destroyTarget(false);
-        </script>
         
+ 
+
+</script>
+ 
+ 
+
     </body>
     
 </html>
