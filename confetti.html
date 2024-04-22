@@ -4,47 +4,74 @@
         
     <title>confetti</title>
     <script type="text/javascript" src="js/confetti.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     
     </head>
     <body>
 
-        <main>
-            <input type="checkbox" id="fldHoldList">Click me
+        <main id="fldHoldList">
+            <input  id="forConfetti" type="checkbox" onclick="someConfetti()">Click me
+            
         </main>
 
+
         <script>
-
-//document.getElementById("fldHoldList").addEventListener("click", function() {
-//alert(event.target.value)
-//  confetti();
-//});
-
-  
-  
- 
-
- 
-    alert("here")
-
-    const confetti = new Confetti("fldHoldList");
-
-// Confetti configuration
-confetti.setCount(75);
-confetti.setCount(100);
-confetti.setSize(.7);
-confetti.setPower(15);
-confetti.setFade(true);  
-confetti.destroyTarget(false);
-        
- 
-
-</script>
- 
- 
-
-    </body>
+function someConfetti(){
     
-</html>
+    var check = document.getElementById("forConfetti")
+    if (check.checked == true){
+        
+        myConfetti();
+}else{
+    
+}
+}
 
+
+/*const confetti = new Confetti("forConfetti");
+confetti.setCount(175);
+confetti.setSize(.8);
+confetti.setPower(25);
+confetti.setFade(true);
+confetti.destroyTarget(false);} 
+}*/
+var count = 200;
+var defaults = {
+  origin: { y: 0.7 }
+   
+};
+scalar
+function fire(particleRatio, opts) {
+  confetti(Object.assign({}, defaults, opts, {
+    particleCount: Math.floor(count * particleRatio)
+  }));
+}
+
+function myConfetti(){
+fire(0.25, {
+  spread: 26,
+  startVelocity: 55,
+});
+fire(0.2, {
+  spread: 60,
+});
+fire(0.35, {
+  spread: 100,
+  decay: 0.91,
+  //scalar: 0.2
+});
+fire(0.1, {
+  spread: 120,
+  startVelocity: 25,
+  decay: 0.92,
+  //scalar: .2
+});
+fire(0.1, {
+  spread: 120,
+  startVelocity: 45,
+});
+} 
+
+
+        </script>
+ </body>       

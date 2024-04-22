@@ -78,7 +78,7 @@
       <!--***TEXT INPUT AND CONTAINER FOR CHECKBOXES-->
         <form class="w3-container" id="myList"  >
             <input id="inpTask" class="w3-input w3-round-xxlarge w3-border w3-border-theme" type="text">
-            <fieldset id="fldHoldList" onclick="boxChecked()"></fieldset> <!--creates a space for checkboxes-->
+            <fieldset id="fldHoldList"></fieldset> <!--creates a space for checkboxes-->
             <p></p>
         </form>  
   </div>
@@ -112,6 +112,8 @@
 
 <script>
  
+    
+       
 
 //***EVENT LISTENERS***
 
@@ -125,6 +127,7 @@ inpTask.addEventListener("keypress", function(event) {
 
 //Adds gray class to list item when checked. 
 document.getElementById("fldHoldList").addEventListener("click", function() {
+ 
   boxChecked(event.target);
 });
 
