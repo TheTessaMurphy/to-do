@@ -23,7 +23,7 @@
 <p></p>
 
 <label class="switch ">
-  <input type="checkbox" class="w3-check w3-theme-d5">
+  <input id = "tglConfetti" type="checkbox" class="w3-check w3-theme-d5">
   <span class="slider round"></span>
 </label>
             
@@ -35,12 +35,23 @@
 
 document.getElementById('fldHoldList').onclick = ev => {
   var check = event.target;
+  var radio = document.getElementById("tglConfetti");
+  if (radio.checked){
   if (check.checked == true){
     
   
-    nowItsAParty(ev.target);}
-    
+    nowItsAParty(ev.target);
+  }
+}  
 };
+
+/*document.getElementById("tglConfetti").addEventListener("click", function() {
+var radio = document.getElementById("tglConfetti");
+  if (radio.checked) {
+  alert("here")
+}
+
+});*/
 
 function checking (element){
 
