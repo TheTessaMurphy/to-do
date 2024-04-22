@@ -1,3 +1,15 @@
+@import "css/toggle.css";
+input:checked + .slider {
+    background-color: #a13019;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #a13019;
+  }
+  .slider{
+    background-color: #f4c2b8;
+}
+
 .w3-theme-l5 {color:#000 !important; background-color:#fcf1ef !important}
 .w3-theme-l4 {color:#000 !important; background-color:#fbebe7 !important}
 .w3-theme-l3 {color:#000 !important; background-color:#f8d6cf !important}
