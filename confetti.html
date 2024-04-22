@@ -2,76 +2,42 @@
 <html lang="en">
     <head>
         
-    <title>confetti</title>
-    <script type="text/javascript" src="js/confetti.min.js"></script>
+    <title>New confetti</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script type="text/javascript" src="js/confetti.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     
     </head>
     <body>
-
-        <main id="fldHoldList">
-            <input  id="forConfetti" type="checkbox" onclick="someConfetti()">Click me
+      <div class="w3-row w3-border-0 ">
+      <div class="w3-quarter w3-container"></div>
+        <main id="fldHoldList" class="w3-half w3-container">
+          <!--****HEADING***-->  
+        <h1 class="w3-center w3-margin-top w3-margin-bottom w3-theme-d5 w3-round-xxlarge"><span class="w3-theme-l1" style="background-clip: text;
+          -webkit-background-clip: text;"><span class="fontStuffClip" >My ToDo List</span></span></h1>  
+          <input  id="forConfetti" type="checkbox" >Click me
             
         </main>
+<div class="w3-quarter w3-container"></div>
+</div>
+<script>
 
-
-        <script>
-function someConfetti(){
+document.getElementById('fldHoldList').onclick = ev => {
+  var check = event.target;
+  if (check.checked == true){
     
-    var check = document.getElementById("forConfetti")
-    if (check.checked == true){
-        
-        myConfetti();
-}else{
+  
+    nowItsAParty(ev.target);}
     
-}
-}
-
-
-/*const confetti = new Confetti("forConfetti");
-confetti.setCount(175);
-confetti.setSize(.8);
-confetti.setPower(25);
-confetti.setFade(true);
-confetti.destroyTarget(false);} 
-}*/
-var count = 200;
-var defaults = {
-  origin: { y: 0.7 }
-   
 };
-scalar
-function fire(particleRatio, opts) {
-  confetti(Object.assign({}, defaults, opts, {
-    particleCount: Math.floor(count * particleRatio)
-  }));
+
+function checking (element){
+
+  alert(element.id)
 }
 
-function myConfetti(){
-fire(0.25, {
-  spread: 26,
-  startVelocity: 55,
-});
-fire(0.2, {
-  spread: 60,
-});
-fire(0.35, {
-  spread: 100,
-  decay: 0.91,
-  //scalar: 0.2
-});
-fire(0.1, {
-  spread: 120,
-  startVelocity: 25,
-  decay: 0.92,
-  //scalar: .2
-});
-fire(0.1, {
-  spread: 120,
-  startVelocity: 45,
-});
-} 
 
 
-        </script>
- </body>       
+</script>
+</body>
+</html>
