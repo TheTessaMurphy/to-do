@@ -1,7 +1,8 @@
 
 function Main() {
 
-    setRadio();
+    setColorRadio();
+    setToggle();
     //Get arrays from local storage
     var arrDays = JSON.parse(localStorage.getItem("days"));
     var arrTrans = JSON.parse(localStorage.getItem("transformed"))
@@ -38,8 +39,9 @@ function loadList(arrDays, arrTrans) {
     }
         
     //runs through when page loads or reloads and adds checks and bold.  
-    var checkbox = document.querySelectorAll("input[type='checkbox']");
-    var labels = document.getElementsByTagName('LABEL');
+    var checkbox = fldHoldList.querySelectorAll("input[type='checkbox']");
+    var labels = document.querySelectorAll(".toDoLabel");
+    
     var nd = new Date().toLocaleDateString('en-us', { weekday:"long"});
     for (var i = 0; i < arrToDo.length; i++){
         
@@ -50,7 +52,7 @@ function loadList(arrDays, arrTrans) {
         }
     
         if (obj["bold"]=="true"){
-            
+           
             labels[i].classList.add("bold");
         }
     } 
@@ -67,12 +69,12 @@ function createCheckbox(obj) {
         
     checkboxes.setAttribute("type", "checkbox");
     checkboxes.classList.add("w3-check");
-    
     checkboxes.value=obj["todo"];
     checkboxes.checked=JSON.parse(obj["checked"]);
     
     label.htmlFor = obj["todo"];
-    
+    label.classList.add("toDoLabel");
+
     fldHoldList.appendChild(checkboxes);
     fldHoldList.appendChild(label);
     label.appendChild(document.createTextNode(" "));
@@ -87,21 +89,21 @@ function boxChecked(elt){
     // if the checkbox is checked, a class is added to its label
     // that turns the text gray. If checkbox is unchecked, the class is removed
     // the value in the object is changed and the array saved to local storage      
-        
-    var target = elt;
+ var target = elt;
     const value = elt.value;
     var arrDays = JSON.parse(localStorage.getItem("days"));
     var arrTransformed = JSON.parse(localStorage.getItem("transformed"));
     //var obj = arr.find(obj => obj["todo"] === value);
     //var indx = arr.indexOf(obj);
-    var labels = document.getElementsByTagName('LABEL');
+    var labels = document.querySelectorAll(".toDoLabel");
     var found = arrDays.includes(arrDays.find(obj => obj["todo"] === value));
     if(found == true){
+       
         var arr = arrDays;
         var name = "days";
         var obj = arr.find(obj => obj["todo"] === value);
-        var indx = arr.indexOf(obj);
-        
+        var indx = arr.indexOf(obj); 
+       
     } else {
         var arr = arrTransformed;
         var name = "transformed";
@@ -112,16 +114,17 @@ function boxChecked(elt){
     
     for (var i = 0; i < labels.length; i++) {
         if (labels[i].htmlFor == value ) {
-            
+             
             if(target.checked){
                 labels[i].classList.add("gray");
                 obj["checked"] = "true";
                 arr.splice(indx, 1, obj);
                 localStorage.setItem(name, JSON.stringify(arr));   
             } else { labels[i].classList.remove("gray");
+           
             obj["checked"] = "false"
-            arr.splice(indx, 1, obj);
-            localStorage.setItem(name, JSON.stringify(arr));  
+                arr.splice(indx, 1, obj);
+                localStorage.setItem(name, JSON.stringify(arr));  
             }  
         }    
     } 
@@ -137,7 +140,7 @@ function makeBold(elt){
     var arr = JSON.parse(localStorage.getItem("transformed"));
     var obj = arr.find(obj => obj["todo"] === value);
     var indx = arr.indexOf(obj);
-    var labels = document.getElementsByTagName('LABEL');
+    var labels = document.querySelectorAll(".toDoLabel");
         
     for (var i = 0; i < labels.length; i++) {
         if (labels[i].htmlFor == value ) {
@@ -202,15 +205,35 @@ function clearList() {
 //from the array then reloads the page so the updated list appears.
     
     var transformed = JSON.parse(localStorage.getItem("transformed"));
-    var days = JSON.parse(localStorage.getItem("days"));
-    var check = document.querySelectorAll("input[type='checkbox']");
-    var label = document.querySelectorAll("LABEL");
-    var linebreak = document.querySelectorAll("br");
+    //var days = JSON.parse(localStorage.getItem("days"));
+    var check = fldHoldList.querySelectorAll("input[type='checkbox']");
+    var label = fldHoldList.querySelectorAll(".toDoLabel");
+    var linebreak = fldHoldList.querySelectorAll("br");
 
     for (var i=check.length-1; i >=0; i--){
+        
         if(check[i].checked){
-            var str = check[i].value;
-            var idx = transformed.findIndex(i => i["todo"] === str);
+            
+            var index = transformed.findIndex(x => x["todo"] === check[i].value);
+            
+            if (index >= 0){
+                
+                
+                
+                transformed.splice(index, 1);
+                localStorage.setItem("transformed", JSON.stringify(transformed));
+                
+            } 
+
+            
+            
+            fldHoldList.removeChild(check[i]);
+                fldHoldList.removeChild(label[i]);
+                
+                fldHoldList.removeChild(linebreak[i]);
+            /*var str = check[i].value;
+            var idx = transformed.findIndex(x => x["todo"] === str);
+            
             if(idx >= 0){
                 transformed.splice(idx, 1);
                 localStorage.setItem("transformed", JSON.stringify(transformed));
@@ -220,14 +243,12 @@ function clearList() {
                 fldHoldList.removeChild(linebreak[i]);
             } else {
                 
-                fldHoldList.removeChild(check[i]);
-                fldHoldList.removeChild(label[i]);
-                fldHoldList.removeChild(linebreak[i]);
+                
 
                 
                 
 
-            }
+            }*/
             
         }
     } 

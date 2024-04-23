@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+    <title>New confetti</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link id="styles" rel="stylesheet" href="css/peachColorThemes.css">
+    <link id="styles" rel="stylesheet" href="css/toggle.css">
+    <script type="text/javascript" src="js/confetti.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    
+    </head>
+    <body onload="setToggle()">
+      <div class="w3-row w3-border-0 ">
+      <div class="w3-quarter w3-container"></div>
+      <div class=" w3-theme-l5 w3-half w3-container w3-padding-16 w3-card-4">
+          <!--****HEADING***-->  
+          <h1 class="w3-center w3-margin-top w3-margin-bottom w3-theme-d5 w3-round-xxlarge"><span class="w3-theme-l1" style="background-clip: text;
+            -webkit-background-clip: text;"><span class="fontStuffClip" >My ToDo List</span></span></h1>  
+          <form class="w3-container" id="myList" >
+          <div id="fldHoldList">
+          
+          <input  type="checkbox" class="w3-check">Click me
+        </div> <!--end of fieldhold-->
+      
+      </form>
+<p></p>
+
+<label class="switch ">
+  <input id = "tglConfetti" type="checkbox" class="w3-check w3-theme-d5">
+  <span class="slider round"></span>
+</label>
+            
+</div>
+
+<div class="w3-quarter w3-container"></div>
+</div>
+<script>
+
+document.getElementById('fldHoldList').onclick = ev => {
+  var check = event.target;
+  var radio = document.getElementById("tglConfetti");
+  if (radio.checked){
+  
+    if (check.checked == true){
+    
+  
+    nowItsAParty(ev.target);
+    
+  }
+} 
+
+
+};
+
+document.getElementById("fldHoldList").addEventListener("click", function() {
+var radio = document.getElementById("fldHoldList");
+ 
+ 
+
+
+});
+
+function checking(value){
+
+  
+}
+
+document.getElementById('tglConfetti').onclick = ev => {
+  
+  var check = event.target;
+  if (check.checked){
+     var toggleSet = "on"
+    
+  } else {
+    var toggleSet = "off"
+    
+  }
+  alert(toggleSet)
+  localStorage.setItem("toggleSet", toggleSet);
+};
+
+function setToggle(){
+  
+  var toggleSet = localStorage.getItem("toggleSet");
+  
+  var tog = document.getElementById("tglConfetti");
+  if (toggleSet == "on"){
+    tog.checked = true;
+  } else {
+      tog.checked = false;
+  }
+
+
+  
+}
+
+</script>
+</body>
+</html>
