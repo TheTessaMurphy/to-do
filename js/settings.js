@@ -84,4 +84,16 @@ function dropSettings() {
         }
     }
 
+    function setToggle(){
+  
+        var toggleSet = localStorage.getItem("toggleSet");
+        
+        var tog = document.getElementById("tglConfetti");
+        if (toggleSet == "on"){
+          tog.checked = true;
+        } else {
+            tog.checked = false;
+        }
+      }
+
     

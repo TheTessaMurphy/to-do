@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     
     </head>
-    <body>
+    <body onload="setToggle()">
       <div class="w3-row w3-border-0 ">
       <div class="w3-quarter w3-container"></div>
       <div class=" w3-theme-l5 w3-half w3-container w3-padding-16 w3-card-4">
@@ -66,7 +66,34 @@ function checking(value){
   
 }
 
+document.getElementById('tglConfetti').onclick = ev => {
+  
+  var check = event.target;
+  if (check.checked){
+     var toggleSet = "on"
+    
+  } else {
+    var toggleSet = "off"
+    
+  }
+  alert(toggleSet)
+  localStorage.setItem("toggleSet", toggleSet);
+};
 
+function setToggle(){
+  
+  var toggleSet = localStorage.getItem("toggleSet");
+  
+  var tog = document.getElementById("tglConfetti");
+  if (toggleSet == "on"){
+    tog.checked = true;
+  } else {
+      tog.checked = false;
+  }
+
+
+  
+}
 
 </script>
 </body>

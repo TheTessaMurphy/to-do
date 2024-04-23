@@ -133,9 +133,7 @@
 </html>
 
 <script>
- 
-    
-       
+     
 
 //***EVENT LISTENERS***
 
@@ -147,23 +145,18 @@ inpTask.addEventListener("keypress", function(event) {
     }
 });
 
-
-
-
+//Creates confetti
 document.getElementById('fldHoldList').onclick = ev => {
   
   var check = event.target;
   var radio = document.getElementById("tglConfetti");
   if (radio.checked){
-  
     if (check.checked == true){
     nowItsAParty(ev.target);
-    
-  }
-} 
-
-
+    } 
+  } 
 };
+
 //Adds gray class to list item when checked. 
 document.getElementById("fldHoldList").addEventListener("click", function() {
  
@@ -175,6 +168,7 @@ document.getElementById("fldHoldList").addEventListener("click", function() {
     makeBold(event.target);
 });
 
+//***RECURRING DAYS***
 //Opens modal to selected day when day is clicked
 document.getElementById("lstDays").addEventListener("click", function() {
    openModal(event.target.id);
@@ -195,6 +189,8 @@ document.getElementById("btnVoice").addEventListener("click", function() {
 });
 
 //***SETTINGS***/
+
+//Saves color choice
 document.getElementById("btnSave").addEventListener("click", function() {
   
   var y = document.getElementById("lstColor")
@@ -210,6 +206,7 @@ document.getElementById("btnSave").addEventListener("click", function() {
   x.className = x.className.replace(" w3-show", "");
 });
 
+//Closes color dialog without saving
 document.getElementById("btnClose").addEventListener("click", function() {
   var y = document.getElementById("lstColor")
   var x = document.getElementById("lstSettings");
@@ -218,6 +215,7 @@ document.getElementById("btnClose").addEventListener("click", function() {
   x.className = x.className.replace("w3-show", "");                 
 });
 
+//closes confetti
 document.getElementById("closeConfetti").addEventListener("click", function() {
   var y = document.getElementById("chkConfetti")
   var x = document.getElementById("lstSettings");
@@ -225,6 +223,21 @@ document.getElementById("closeConfetti").addEventListener("click", function() {
   y.className = y.className.replace(" w3-show", "");
   x.className = x.className.replace("w3-show", "");                 
 });
+
+
+document.getElementById('tglConfetti').onclick = ev => {
+  
+  var check = event.target;
+  if (check.checked){
+     var toggleSet = "on"
+    
+  } else {
+    var toggleSet = "off"
+    
+  }
+  
+  localStorage.setItem("toggleSet", toggleSet);
+};
 
 
 
