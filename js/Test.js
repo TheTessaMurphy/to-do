@@ -1,7 +1,7 @@
 
 function Main() {
 
-    setRadio();
+    setColorRadio();
     //Get arrays from local storage
     var arrDays = JSON.parse(localStorage.getItem("days"));
     var arrTrans = JSON.parse(localStorage.getItem("transformed"))
@@ -38,7 +38,7 @@ function loadList(arrDays, arrTrans) {
     }
         
     //runs through when page loads or reloads and adds checks and bold.  
-    var checkbox = document.querySelectorAll("input[type='checkbox']");
+    var checkbox = fldHoldList.querySelectorAll("input[type='checkbox']");
     var labels = document.querySelectorAll(".toDoLabel");
     
     var nd = new Date().toLocaleDateString('en-us', { weekday:"long"});
@@ -97,6 +97,7 @@ function boxChecked(elt){
     var labels = document.querySelectorAll(".toDoLabel");
     var found = arrDays.includes(arrDays.find(obj => obj["todo"] === value));
     if(found == true){
+       
         var arr = arrDays;
         var name = "days";
         var obj = arr.find(obj => obj["todo"] === value);
@@ -114,6 +115,7 @@ function boxChecked(elt){
         if (labels[i].htmlFor == value ) {
              
             if(target.checked){
+                labels[i].classList.add("gray");
                 obj["checked"] = "true";
                 arr.splice(indx, 1, obj);
                 localStorage.setItem(name, JSON.stringify(arr));   

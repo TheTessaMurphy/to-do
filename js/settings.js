@@ -54,7 +54,7 @@ function dropSettings() {
 
     }
 
-    function setRadio(){
+    function setColorRadio(){
     
         /*Gets id of current themes.css from local storage.
     Gets the value of that id. Creates the name of the style sheet
@@ -69,3 +69,19 @@ function dropSettings() {
         newStyle.setAttribute("href", name);
         radiobtn.checked = true;
     }
+
+
+    function dropConfetti() {
+            
+        var x = document.getElementById("chkConfetti");
+        
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+        } else { 
+            var x = document.getElementById("chkConfetti");
+            x.className = x.className.replace(" w3-show", "");
+            
+        }
+    }
+
+    

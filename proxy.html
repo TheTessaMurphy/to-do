@@ -8,12 +8,14 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link id="styles" rel="stylesheet" href="css/blueColorThemes.css">
         <link rel="stylesheet" href="css/toDoStyles.css">
+        <link id="styles" rel="stylesheet" href="css/toggle.css">
                 
         <script type="text/javascript" src="js/Test.js"></script>
         <script type="text/javascript" src="js/daysCode.js"></script>
         <script type="text/javascript" src="js/voice.js"></script>
         <script type="text/javascript" src="js/settings.js"></script>
-        <script type="text/javascript" src="js/confetti.min.js"></script>
+        <script type="text/javascript" src="js/confetti.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     </head>
     
     <body onload="Main()" class= "w3-theme-l2" >
@@ -31,10 +33,27 @@
         <button id="btnSettings" onclick="dropSettings()" class="w3-btn btnCircle w3-circle w3-theme-d4 w3-hover-text-theme w3-ripple">
           <i class="fa fa-cog" aria-hidden="true"></i></button>
         <div id="lstSettings" class="w3-dropdown-content w3-bar-block w3-border" style="margin-left: -116px;">
-          <option id="about"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="about">About</option>
-          <option id="how-To"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="how-to">How-To</option>
+          <option id="about" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="about">About</option>
+          <option id="how-To" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="how-to">How-To</option>
+          
+          
+      <!--***Confetti***-->
           <div class="w3-dropdown-click">
-      <!--***Colors***-->      
+            <option onclick="dropConfetti()" id="setConfetti" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="confetti">Confetti</option>
+            <div id="chkConfetti" class=" w3-container w3-dropdown-content w3-bar-block w3-border w3-theme-l5">
+            <p></p>
+            <header class="w3-container">
+            <button id="closeConfetti" class="btnCircle w3-btn w3-circle w3-theme-d4 w3-ripple w3-medium w3-display-topright">&times;</button>  
+          </header><br><br>
+          
+            Off <label class="switch ">
+              <input id="tglConfetti" type="checkbox" checked class="w3-check w3-theme-d5">
+              <span class="slider round"></span>
+            </label> On <br><br>
+          </div>
+          </div>
+       <!--***Colors***-->  
+          <div class="w3-dropdown-click">
             <option onclick="dropColor()" id="colors" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="colors">Colors</option>
             <div id="lstColor" class="w3-dropdown-content w3-bar-block w3-border w3-theme-l5">
               <input id="rdBlue" class="w3-radio" type="radio" name="color" value="blue" onclick="getColor(value)" checked>Blue<br>
@@ -77,9 +96,11 @@
           -webkit-background-clip: text;"><span class="fontStuffClip" >My ToDo List</span></span></h1>
       
       <!--***TEXT INPUT AND CONTAINER FOR CHECKBOXES-->
-        <form class="w3-container" id="myList"  >
+        <form class="w3-container" id="myList" >
             <input id="inpTask" class="w3-input w3-round-xxlarge w3-border w3-border-theme" type="text">
-            <fieldset id="fldHoldList"></fieldset> <!--creates a space for checkboxes-->
+            <fieldset id="fldHoldList">
+              
+            </fieldset> <!--creates a space for checkboxes-->
             <p></p>
         </form>  
   </div>
@@ -126,6 +147,23 @@ inpTask.addEventListener("keypress", function(event) {
     }
 });
 
+
+
+
+document.getElementById('fldHoldList').onclick = ev => {
+  
+  var check = event.target;
+  var radio = document.getElementById("tglConfetti");
+  if (radio.checked){
+  
+    if (check.checked == true){
+    nowItsAParty(ev.target);
+    
+  }
+} 
+
+
+};
 //Adds gray class to list item when checked. 
 document.getElementById("fldHoldList").addEventListener("click", function() {
  
@@ -180,20 +218,14 @@ document.getElementById("btnClose").addEventListener("click", function() {
   x.className = x.className.replace("w3-show", "");                 
 });
 
+document.getElementById("closeConfetti").addEventListener("click", function() {
+  var y = document.getElementById("chkConfetti")
+  var x = document.getElementById("lstSettings");
+  
+  y.className = y.className.replace(" w3-show", "");
+  x.className = x.className.replace("w3-show", "");                 
+});
 
-
-/*function dropColor() {
-            
-            var x = document.getElementById("lstColor");
-            
-            if (x.className.indexOf("w3-show") == -1) {
-                x.className += " w3-show";
-            } else { 
-                var x = document.getElementById("lstColor");
-                x.className = x.className.replace(" w3-show", "");
-                
-            }
-        }  */
 
 
 //Every morning at midnight, page reloads with new day

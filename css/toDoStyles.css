@@ -114,3 +114,10 @@ option {
 .w3-check {
     border-radius: 50%;
 } 
+
+#closeConfetti {
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
