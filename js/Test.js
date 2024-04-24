@@ -14,12 +14,78 @@ function Main() {
 
 function loadList(arrDays, arrTrans) {
     
+    
+    
+    //Get arrays and create a loop to use when calling createCheckbox.
+    //Then call createCheckbox to check or uncheck boxes.
     var td = [];
     var nd = new Date().toLocaleDateString('en-us', { weekday:"long"});
+
+        
+    //Check that Arrays exist. If absent, create them.
+    if(!Array.isArray(arrDays)){
+        const days = [];   
+        localStorage.setItem("days", JSON.stringify(days));  
+    } 
+    if(!Array.isArray(arrTrans)){
+        const transformed = [];   
+    localStorage.setItem("transformed", JSON.stringify(transformed));  
+    } 
     
-    //Get array and create a loop to call createCheckbox to create each checkbox
-    //Then call createCheckbox to check or uncheck boxes.
-    if(arrDays != ""){
+    //If arrDays is empty, check whether or not arrTrans is empty.
+    //If arrTrans is not empty, copy arrTrans into the array, td.  
+    if (arrDays.length === 0){
+        if (arrTrans.length === 0){
+            //saySomething.innerHTML="everything's empty";
+            } else {
+                var td = arrTrans;
+                
+            }      
+    
+    //if arrDays is not empty, run through days array extracting everyday 
+    //tasks and current days tasks. Push into the array, td.       
+    } else{
+        for (var i = 0; i < arrDays.length; i++){
+            let obj = arrDays[i];
+            if(obj["day"] == "Everyday" || obj["day"] == nd){
+                td.push(obj)
+            } 
+        }
+        //If arrTrans isn't empty, td becomes the concantenation
+        //of td and arrTrans
+        if (arrTrans.length != 0){
+            td = td.concat(arrTrans);
+        }   
+    }
+
+    if (Array.isArray(td)){
+        for(var i = 0; i < td.length; i++){
+            let obj = td[i];
+             createCheckbox(obj)
+        }
+
+        //runs through when page loads or reloads and adds checks and bold.  
+        var checkbox = fldHoldList.querySelectorAll("input[type='checkbox']");
+        var labels = document.querySelectorAll(".toDoLabel");
+        
+        var nd = new Date().toLocaleDateString('en-us', { weekday:"long"});
+        for (var i = 0; i < td.length; i++){
+            
+            var obj = td[i];
+            
+            if (checkbox[i].checked == true ){
+                labels[i].classList.add("gray");
+            }
+        
+            if (obj["bold"]=="true"){
+            
+                labels[i].classList.add("bold");
+            }
+        }          
+    }
+
+
+    /*if(arrDays != ""){
         for (var i = 0; i < arrDays.length; i++){
             let obj = arrDays[i];
             if(obj["day"] == "Everyday" || obj["day"]== nd){
@@ -36,26 +102,9 @@ function loadList(arrDays, arrTrans) {
             let obj = arrToDo[i];
              createCheckbox(obj)
         }
-    }
+    }*/
         
-    //runs through when page loads or reloads and adds checks and bold.  
-    var checkbox = fldHoldList.querySelectorAll("input[type='checkbox']");
-    var labels = document.querySelectorAll(".toDoLabel");
     
-    var nd = new Date().toLocaleDateString('en-us', { weekday:"long"});
-    for (var i = 0; i < arrToDo.length; i++){
-        
-        var obj = arrToDo[i];
-        
-        if (checkbox[i].checked == true ){
-            labels[i].classList.add("gray");
-        }
-    
-        if (obj["bold"]=="true"){
-           
-            labels[i].classList.add("bold");
-        }
-    } 
 }
 
 function createCheckbox(obj) {

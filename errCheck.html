@@ -23,30 +23,27 @@ var saySomething = $("printOut")
 
 const arrDays=["one", "two", "three"];
 const arrNights=["four", "five", "six"];
-
+//Check that Arrays exist. If absent, create them.
 if(!Array.isArray(arrDays)){
-    alert("days")
-    saySomething.innerHTML = "Null";    
     const something = [];   
 localStorage.setItem("something", JSON.stringify(something));  
 } 
 if(!Array.isArray(arrNights)){
-    saySomething.innerHTML = "nights are Null";    
+    
     const nights = [];   
 localStorage.setItem("nights", JSON.stringify(nights));  
 } 
 
 if (arrDays.length === 0){
-    saySomething.innerHTML="Now it's something but empty";
     if (arrNights.length === 0){
-            saySomething.innerHTML="everything's empty";
-         } else {
-             var td = arrNights;
-             //saySomething.innerHTML=JSON.stringify(td);
-         }      
+        saySomething.innerHTML="everything's empty";
+        } else {
+            var td = arrNights;
+            
+        }      
 } else{
     saySomething.innerHTML = "run through and do stuff";
-       if (arrNights == ""){
+       if (arrNights.length === 0){
             var td = arrDays;
             //saySomething.innerHTML=JSON.stringify(td);
          } else {
