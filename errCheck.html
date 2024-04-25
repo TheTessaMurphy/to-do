@@ -15,51 +15,43 @@ function $(x) {
   return document.getElementById(x);
 }
 
-//localStorage.removeItem("something");
+localStorage.removeItem("sun");
 //localStorage.removeItem("nights");
+
 var saySomething = $("printOut")
-//var arrDays = JSON.parse(localStorage.getItem("something"));
-//var arrNights = JSON.parse(localStorage.getItem("nights"))
 
-const arrDays=["one", "two", "three"];
-const arrNights=["four", "five", "six"];
-//Check that Arrays exist. If absent, create them.
-if(!Array.isArray(arrDays)){
-    const something = [];   
-localStorage.setItem("something", JSON.stringify(something));  
-} 
-if(!Array.isArray(arrNights)){
-    
-    const nights = [];   
-localStorage.setItem("nights", JSON.stringify(nights));  
-} 
-
-if (arrDays.length === 0){
-    if (arrNights.length === 0){
-        saySomething.innerHTML="everything's empty";
-        } else {
-            var td = arrNights;
+   
+var arrDays = JSON.parse(localStorage.getItem("sun"));
+    var arrTrans = JSON.parse(localStorage.getItem("night"))
+ 
+    //Check that Arrays exist. If absent, create them.
+    if(!Array.isArray(arrDays)){
             
-        }      
-} else{
-    saySomething.innerHTML = "run through and do stuff";
-       if (arrNights.length === 0){
-            var td = arrDays;
-            //saySomething.innerHTML=JSON.stringify(td);
-         } else {
-             var td = arrDays;
-             td = td.concat(arrNights);
-            //saySomething.innerHTML=JSON.stringify(td);
-         }   
-}
-
-if (Array.isArray(td)){
-    saySomething.innerHTML=JSON.stringify(td)
-}
-
-        </script>
+        const sun = [];   
+        localStorage.setItem("sun", JSON.stringify(sun));
+        arrDays = localStorage.getItem("sun");
         
-    </body>
+    } 
     
-</html>
+    if(!Array.isArray(arrTrans)){
+        
+        const night = [];   
+        localStorage.setItem("night", JSON.stringify(night));
+        var arrTrans = JSON.parse(localStorage.getItem("night")) 
+        
+    } 
+    
+    //Set focus and call loadList to create list on page
+    //document.getElementById("inpTask").focus();
+    loadList(arrDays, arrTrans);   
 
+
+function loadList(arrDays, arrTrans) {
+    
+ alert("here " + JSON.stringify(arrDays))  
+   
+   
+}
+    </script>
+    </body>
+    <html>

@@ -6,7 +6,6 @@ function Main() {
     //Get arrays from local storage
     var arrDays = JSON.parse(localStorage.getItem("days"));
     var arrTrans = JSON.parse(localStorage.getItem("transformed"))
-    
     //Set focus and call loadList to create list on page
     document.getElementById("inpTask").focus();
     loadList(arrDays, arrTrans);   

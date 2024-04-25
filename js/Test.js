@@ -7,6 +7,21 @@ function Main() {
     var arrDays = JSON.parse(localStorage.getItem("days"));
     var arrTrans = JSON.parse(localStorage.getItem("transformed"))
     
+    //Check that Arrays exist. If absent, create them.
+    if(!Array.isArray(arrDays)){
+        const days = [];   
+        localStorage.setItem("days", JSON.stringify(days));
+        arrDays = localStorage.getItem("days");
+    } 
+    
+    if(!Array.isArray(arrTrans)){
+        
+        const transformed = [];   
+        localStorage.setItem("transformed", JSON.stringify(transformed));
+        var arrTrans = JSON.parse(localStorage.getItem("transformed")) 
+        
+    } 
+    
     //Set focus and call loadList to create list on page
     document.getElementById("inpTask").focus();
     loadList(arrDays, arrTrans);   
@@ -22,19 +37,12 @@ function loadList(arrDays, arrTrans) {
     var nd = new Date().toLocaleDateString('en-us', { weekday:"long"});
 
         
-    //Check that Arrays exist. If absent, create them.
-    if(!Array.isArray(arrDays)){
-        const days = [];   
-        localStorage.setItem("days", JSON.stringify(days));  
-    } 
-    if(!Array.isArray(arrTrans)){
-        const transformed = [];   
-    localStorage.setItem("transformed", JSON.stringify(transformed));  
-    } 
+    
     
     //If arrDays is empty, check whether or not arrTrans is empty.
     //If arrTrans is not empty, copy arrTrans into the array, td.  
     if (arrDays.length === 0){
+        
         if (arrTrans.length === 0){
             //saySomething.innerHTML="everything's empty";
             } else {
