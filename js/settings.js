@@ -45,7 +45,6 @@ function dropSettings() {
                 
                 
         var toRem= document.getElementById('styles');
-        var value = toRem.getAttribute("href"); 
         var name = "css/" + elem + "ColorThemes.css"
         toRem.setAttribute("href", name);
        
@@ -90,9 +89,13 @@ function dropSettings() {
         
         var tog = document.getElementById("tglConfetti");
         if (toggleSet == "on"){
-          tog.checked = true;
+            tog.checked = true;
+            lblOn.className = "w3-toggle-text";
+            lblOff.className = "";
         } else {
             tog.checked = false;
+            lblOff.className = "w3-toggle-text";
+            lblOn.className = "";
         }
       }
 

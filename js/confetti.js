@@ -13,7 +13,7 @@ function randomInRange(min, max) {
 }
 
 // Fires on button click
-function nowItsAParty(element) {
+function makeConfetti(element) {
  
   var rect = element.getBoundingClientRect();
   
