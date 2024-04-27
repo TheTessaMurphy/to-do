@@ -4,7 +4,6 @@ function dropSettings() {
         var y = document.getElementById("lstDays");
         if (x.className.indexOf("w3-show") == -1) {
             x.className += " w3-show";
-            x.style="z-index: 100";
             y.className = y.className.replace("w3-show", "")
 
             
@@ -16,21 +15,8 @@ function dropSettings() {
            
         }
     }
-
     
-   /* function dropColor() {
-    //Opens and closes the color list dialog
-    
-        var x = document.getElementById("ddColor");
-        
-        if (x.className.indexOf("w3-show") == -1) {
-            x.className += "w3-show";
-        } else { 
-            var x = document.getElementById("ddColor");
-            x.className = x.className.replace("w3-show", "");
-        }
-    }  */
-    
+   
     function dropColor() {
             
         var x = document.getElementById("lstColor");
@@ -77,12 +63,15 @@ function dropSettings() {
     function dropConfetti() {
             
         var x = document.getElementById("chkConfetti");
+        var y = document.getElementById("lstSettings");
         
         if (x.className.indexOf("w3-show") == -1) {
             x.className += " w3-show";
+            //y.className = x.className.replace(" w3-show", "");
         } else { 
             var x = document.getElementById("chkConfetti");
             x.className = x.className.replace(" w3-show", "");
+            
             
         }
     }

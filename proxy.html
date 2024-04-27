@@ -32,7 +32,7 @@
           <div class="w3-dropdown-click w3-right" style="background-color: rgba(0, 0, 0, 0);">  <!--Creates container for dropdown-->
             <button id="btnSettings" onclick="dropSettings()" class="w3-btn btnCircle w3-circle w3-theme-d4 w3-hover-text-theme w3-ripple">
               <i class="fa fa-cog" aria-hidden="true"></i></button>
-            <div id="lstSettings" class="w3-dropdown-content w3-bar-block w3-border" style="margin-left: -116px;">
+            <div id="lstSettings" class="w3-dropdown-content w3-bar-block w3-border" style="min-width: 80px; width: 80px; margin-left: -10px;">
               <option id="about" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="about">About</option>
               <option id="how-To" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="how-to">How-To</option>
               
@@ -40,7 +40,7 @@
           <!--***Confetti***-->
               <div class="w3-dropdown-click">
                 <option onclick="dropConfetti()" id="setConfetti" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="confetti">Confetti</option>
-                <div id="chkConfetti" class=" w3-container w3-dropdown-content w3-bar-block w3-border w3-theme-l5">
+                <div id="chkConfetti" class=" w3-container w3-dropdown-content w3-bar-block w3-border w3-theme-l5" style="min-width: 200px; width: 100px; margin-left: -110px">
                 <p></p>
                 <header class="w3-container">
                 <button id="closeConfetti" class="btnCircle w3-btn w3-circle w3-theme-d4 w3-ripple w3-medium w3-display-topright">&times;</button>  
@@ -111,7 +111,7 @@
         <div id="day" class="w3-container w3-modal">
           <div class="w3-container w3-modal-content">
             <header class="w3-container"> 
-              <button onclick="document.getElementById('day').style.display='none'" class="btnCircle w3-btn w3-circle w3-theme-d4 w3-ripple w3-medium w3-display-topright">&times;</button>
+              <button id="btnDays" onclick="document.getElementById('day').style.display='none'" class="btnCircle w3-btn w3-circle w3-theme-d4 w3-ripple w3-medium w3-display-topright">&times;</button>
               <h2 id="dayText"></h2>
               <input type="text" id="enterTask" class="w3-input w3-border" placeholder="Enter Task"  >
             </header>
@@ -145,6 +145,8 @@ inpTask.addEventListener("keypress", function(event) {
     }
 });
 
+
+
 //Adds gray class to list item when checked. 
 document.getElementById("fldHoldList").addEventListener("click", function() {
    boxChecked(event.target);
@@ -172,10 +174,20 @@ document.getElementById("btnDropDown").addEventListener("click", function(){
     
 });
 
-document.getElementById("lstDays").addEventListener("mouseout", function(event){
-  var x = document.getElementById("lstDays");
-  var rect = x.getBoundingClientRect();
+document.body.addEventListener("click", function(event){
   
+  var x = document.getElementById("lstDays");
+  var y =x.parentElement;
+  //var y = document.getElementById("buttonContainer");
+  var rect = x.getBoundingClientRect();
+  var rectb = y.getBoundingClientRect();
+   if (x.classList.contains("w3-show")){
+    if(event.clientX > rect.right || event.clientX < rect.left || event.clientY < rectb.top || event.clientY > rect.bottom){
+      
+          x.className=x.className.replace("w3-show", "");
+} 
+  }
+
   
   //if (x.className.indexOf("w3-show") > -1) {
   // event.preventDefault;    

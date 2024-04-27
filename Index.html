@@ -72,7 +72,7 @@
 
       <!--RECURRING DAYS-->  
         <div class="w3-dropdown-click w3-right" style="background-color: rgba(0, 0, 0, 0);">  <!--Creates container for dropdown-->
-          <button id="btnDropDown" onclick="dropDown()" class="w3-btn btnCircle w3-circle w3-theme-d4 w3-hover-text-theme w3-ripple"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+              <button id="btnDropDown"  class="w3-btn btnCircle w3-circle w3-theme-d4 w3-hover-text-theme w3-ripple"><i class="fa fa-repeat" aria-hidden="true"></i></button>
           <div id="lstDays" class="w3-dropdown-content w3-bar-block w3-border" style="margin-left: -116px;">
             <option class="w3-theme-l5"  value="" disabled selected>Select a day</option> 
             <option id="Everyday"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Everyday">Everyday</option>
@@ -169,6 +169,34 @@ document.getElementById("fldHoldList").addEventListener("click", function() {
 });
 
 //***RECURRING DAYS***
+
+document.getElementById("btnDropDown").addEventListener("click", function(){
+ 
+  var x = document.getElementById("lstDays");
+  var y = document.getElementById("lstSettings");
+    if (x.className.indexOf("w3-show") == -1) {
+      
+      x.className += " w3-show";
+      y.className = y.className.replace("w3-show", "")
+    } else { 
+        var x = document.getElementById("lstDays");
+        x.className = x.className.replace(" w3-show", "");
+    }
+    
+});
+
+document.getElementById("lstDays").addEventListener("mouseout", function(event){
+  var x = document.getElementById("lstDays");
+  var rect = x.getBoundingClientRect();
+  
+  
+  //if (x.className.indexOf("w3-show") > -1) {
+  // event.preventDefault;    
+  
+  //}
+});
+
+
 //Opens modal to selected day when day is clicked
 document.getElementById("lstDays").addEventListener("click", function() {
    openModal(event.target.id);
@@ -215,6 +243,19 @@ document.getElementById("btnClose").addEventListener("click", function() {
   x.className = x.className.replace("w3-show", "");                 
 });
 
+
+//Creates confetti
+document.getElementById('fldHoldList').onclick = event => {
+  
+  var check = event.target;
+  var radio = document.getElementById("tglConfetti");
+  if (radio.checked){
+    if (check.checked == true){
+    makeConfetti(event.target);
+    } 
+  } 
+};
+
 //closes confetti
 document.getElementById("closeConfetti").addEventListener("click", function() {
   var y = document.getElementById("chkConfetti")
@@ -224,20 +265,20 @@ document.getElementById("closeConfetti").addEventListener("click", function() {
   x.className = x.className.replace("w3-show", "");                 
 });
 
-
+//toggles confetti off and on.
 document.getElementById('tglConfetti').onclick = event => {
   var lblOn = document.getElementById("lblOn");
   var lblOff = document.getElementById("lblOff");
   var check = event.target;
   if (check.checked){
      var toggleSet = "on"
-     lblOn.className = "w3-toggle-text";
-     lblOff.className = "";
+     lblOn.className = "w3-toggle-bold";
+     lblOff.className = "w3-toggle-norm";
     
   } else {
     var toggleSet = "off"
-    lblOff.className = "w3-toggle-text";
-    lblOn.className = "";
+    lblOff.className = "w3-toggle-bold";
+    lblOn.className = "w3-toggle-norm";
   }
   
   localStorage.setItem("toggleSet", toggleSet);
