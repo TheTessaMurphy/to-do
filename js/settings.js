@@ -1,9 +1,13 @@
 function dropSettings() {
     //opens and closes the settings dialog
         var x = document.getElementById("lstSettings");
-        
+        var y = document.getElementById("lstDays");
         if (x.className.indexOf("w3-show") == -1) {
             x.className += " w3-show";
+            x.style="z-index: 100";
+            y.className = y.className.replace("w3-show", "")
+
+            
         } else { 
             var x = document.getElementById("lstSettings");
             var y = document.getElementById("lstColor");
@@ -45,7 +49,6 @@ function dropSettings() {
                 
                 
         var toRem= document.getElementById('styles');
-        var value = toRem.getAttribute("href"); 
         var name = "css/" + elem + "ColorThemes.css"
         toRem.setAttribute("href", name);
        
@@ -90,9 +93,13 @@ function dropSettings() {
         
         var tog = document.getElementById("tglConfetti");
         if (toggleSet == "on"){
-          tog.checked = true;
+            tog.checked = true;
+            lblOn.className = "w3-toggle-bold";
+            lblOff.className = "w3-toggle-norm"
         } else {
             tog.checked = false;
+            lblOff.className = "w3-toggle-bold";
+            lblOn.className = "w3-toggle-norm"
         }
       }
 

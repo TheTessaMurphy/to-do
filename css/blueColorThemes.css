@@ -34,4 +34,5 @@ input:checked + .slider {
 .w3-hover-text-theme:hover {color:#b9d6e8 !important}
 .w3-hover-border-theme:hover {border-color:#4f97c4 !important}
 .w3-listening-text {color: #b9d6e8 !important}
-
+.w3-toggle-bold{font-weight: bold; color: #295c7c !important}
+.w3-toggle-norm{font-weight: bold; color: #b4b7b9 !important}
