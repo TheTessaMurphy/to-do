@@ -46,10 +46,10 @@
             <button id="closeConfetti" class="btnCircle w3-btn w3-circle w3-theme-d4 w3-ripple w3-medium w3-display-topright">&times;</button>  
           </header><br><br>
           
-            Off <label class="switch ">
+           <label id="lblOff">Off</label><label class="switch ">
               <input id="tglConfetti" type="checkbox" checked class="w3-check w3-theme-d5">
               <span class="slider round"></span>
-            </label> On <br><br>
+            </label><label id="lblOn">On</label><br><br>
           </div>
           </div>
        <!--***Colors***-->  
@@ -146,13 +146,13 @@ inpTask.addEventListener("keypress", function(event) {
 });
 
 //Creates confetti
-document.getElementById('fldHoldList').onclick = ev => {
+document.getElementById('fldHoldList').onclick = event => {
   
   var check = event.target;
   var radio = document.getElementById("tglConfetti");
   if (radio.checked){
     if (check.checked == true){
-    nowItsAParty(ev.target);
+    makeConfetti(event.target);
     } 
   } 
 };
@@ -225,15 +225,19 @@ document.getElementById("closeConfetti").addEventListener("click", function() {
 });
 
 
-document.getElementById('tglConfetti').onclick = ev => {
-  
+document.getElementById('tglConfetti').onclick = event => {
+  var lblOn = document.getElementById("lblOn");
+  var lblOff = document.getElementById("lblOff");
   var check = event.target;
   if (check.checked){
      var toggleSet = "on"
+     lblOn.className = "w3-toggle-text";
+     lblOff.className = "";
     
   } else {
     var toggleSet = "off"
-    
+    lblOff.className = "w3-toggle-text";
+    lblOn.className = "";
   }
   
   localStorage.setItem("toggleSet", toggleSet);
