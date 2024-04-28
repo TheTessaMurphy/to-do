@@ -14,14 +14,9 @@ function randomInRange(min, max) {
 
 // Fires on button click
 function makeConfetti(element) {
- 
   var rect = element.getBoundingClientRect();
-  
-
   var originX = (rect.x + (0.5 * rect.width)) / width;
   var originY =  (rect.y + (0.5 * rect.height)) / height;
-
-  
 
   fireConfetti(originX, originY);
 }

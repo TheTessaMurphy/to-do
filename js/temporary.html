@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>temporary </title>
+        
+    </head>
+    <body onload="Main()">
+        
+        
+<script>
+
+var now = new Date();
+var timer = 15000;
+var reloadTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 2, 0, 0, 0) - now;
+if (reloadTime < 0) {
+    alert("oops") 
+    reloadTime += 1000//3600000; // If past 2:00 try again in an hour.
+}
+setTimeout(function(){
+
+    alert(reloadTime)
+
+}, timer);
+
+
+
+
+        
+ </script>       
+    </body>
+    
+</html>
+

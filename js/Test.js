@@ -12,6 +12,7 @@ function Main() {
         const days = [];   
         localStorage.setItem("days", JSON.stringify(days));
         arrDays = localStorage.getItem("days");
+        
     } 
     
     if(!Array.isArray(arrTrans)){
@@ -30,7 +31,7 @@ function Main() {
 function loadList(arrDays, arrTrans) {
 //Get arrays and create a loop to use when calling createCheckbox.
 //Then call createCheckbox to check or uncheck boxes.
-    
+
     var td = [];
     var nd = new Date().toLocaleDateString('en-us', { weekday:"long"});
 
@@ -51,6 +52,7 @@ function loadList(arrDays, arrTrans) {
             let obj = arrDays[i];
             if(obj["day"] == "Everyday" || obj["day"] == nd){
                 td.push(obj)
+                
             } 
         }
         //If arrTrans isn't empty, concantenate td and arrTrans.
@@ -103,8 +105,8 @@ function createCheckbox(obj) {
     label.htmlFor = obj["todo"];
     label.classList.add("toDoLabel");
 
-    fldHoldList.appendChild(checkboxes);
-    fldHoldList.appendChild(label);
+   fldHoldList.appendChild(checkboxes);
+   fldHoldList.appendChild(label);
     label.appendChild(document.createTextNode(" "));
     label.appendChild(document.createTextNode(obj["todo"]));
     fldHoldList.appendChild(linebreak);
