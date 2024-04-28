@@ -28,16 +28,15 @@
       <div class=" w3-theme-l5 w3-half w3-container w3-padding-16 w3-card-4">
         <div class="buttonContainer w3-theme-l3 w3-right w3-padding w3-round-xxlarge">
       
-          <!***SETTINGS***-->  
+    <!***SETTINGS***-->  
           <div class="w3-dropdown-click w3-right" style="background-color: rgba(0, 0, 0, 0);">  <!--Creates container for dropdown-->
             <button id="btnSettings" onclick="dropSettings()" class="w3-btn btnCircle w3-circle w3-theme-d4 w3-hover-text-theme w3-ripple">
               <i class="fa fa-cog" aria-hidden="true"></i></button>
             <div id="lstSettings" class="w3-dropdown-content w3-bar-block w3-border" style="min-width: 80px; width: 80px; margin-left: -10px;">
               <option id="about" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="about">About</option>
               <option id="how-To" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="how-to">How-To</option>
-              
-              
-          <!--***Confetti***-->
+                        
+      <!--***Confetti***-->
               <div class="w3-dropdown-click">
                 <option onclick="dropConfetti()" id="setConfetti" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="confetti">Confetti</option>
                 <div id="chkConfetti" class=" w3-container w3-dropdown-content w3-bar-block w3-border w3-theme-l5" style="min-width: 200px; width: 100px; margin-left: -110px">
@@ -52,10 +51,10 @@
                 </label><label id="lblOn">On</label><br><br>
               </div>
               </div>
-          <!--***Colors***-->  
+      <!--***Colors***-->  
               <div class="w3-dropdown-click">
                 <option onclick="dropColor()" id="colors" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="colors">Colors</option>
-                <div id="lstColor" class="w3-dropdown-content w3-bar-block w3-border w3-theme-l5">
+                <div id="lstColor" class="w3-dropdown-content w3-bar-block w3-border w3-theme-l5" style="min-width: 200px; width: 100px; margin-left: -110px">
                   <input id="rdBlue" class="w3-radio" type="radio" name="color" value="blue" onclick="getColor(value)" checked>Blue<br>
                   <input id="rdPeach" class="w3-radio" type="radio" name="color" value="peach" onclick="getColor(value)">Peach<br>
                   <input id="rdGold" class="w3-radio" type="radio" name="color" value="gold" onclick="getColor(value)">Goldenrod<br>
@@ -70,40 +69,40 @@
             </div>
           </div>
 
-          <!--RECURRING DAYS-->  
-            <div class="w3-dropdown-click w3-right" style="background-color: rgba(0, 0, 0, 0);">  <!--Creates container for dropdown-->
-              <button id="btnDropDown"  class="w3-btn btnCircle w3-circle w3-theme-d4 w3-hover-text-theme w3-ripple"><i class="fa fa-repeat" aria-hidden="true"></i></button>
-              <div id="lstDays" class="w3-dropdown-content w3-bar-block w3-border" style="margin-left: -116px;">
-                <option class="w3-theme-l5"  value="" disabled selected>Select a day</option> 
-                <option id="Everyday"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Everyday">Everyday</option>
-                <option id="Monday"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Monday">Monday</option>
-                <option id="Tuesday"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Tuesday">Tuesday</option>
-                <option id="Wednesday" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Wednesday">Wednesday</option>
-                <option id="Thursday" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Thursday">Thursday</option>
-                <option id="Friday" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Friday">Friday</option>
-                <option id="Saturday" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Saturday">Saturday</option>
-                <option id="Sunday" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Sunday">Sunday</option>
-              </div>
+    <!--***RECURRING DAYS***-->  
+          <div class="w3-dropdown-click w3-right" style="background-color: rgba(0, 0, 0, 0);">  <!--Creates container for dropdown-->
+            <button id="btnDropDown"  class="w3-btn btnCircle w3-circle w3-theme-d4 w3-hover-text-theme w3-ripple"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+            <div id="lstDays" class="w3-dropdown-content w3-bar-block w3-border" style="margin-left: -116px;">
+              <option class="w3-theme-l5"  value="" disabled selected>Select a day</option> 
+              <option id="Everyday"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Everyday">Everyday</option>
+              <option id="Monday"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Monday">Monday</option>
+              <option id="Tuesday"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Tuesday">Tuesday</option>
+              <option id="Wednesday" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Wednesday">Wednesday</option>
+              <option id="Thursday" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Thursday">Thursday</option>
+              <option id="Friday" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Friday">Friday</option>
+              <option id="Saturday" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Saturday">Saturday</option>
+              <option id="Sunday" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Sunday">Sunday</option>
             </div>
-          <!--***VOICE, DELETE, AND ADD-->  
+          </div>
+    <!--***VOICE, DELETE, AND ADD-->  
             <button id="btnVoice" class="btnCircle w3-btn w3-theme-d4 w3-hover-text-theme w3-right w3-circle" ><i class="fa fa-microphone" aria-hidden="true"></i></button>  
             <button id="btnClear" class="btnCircle w3-btn w3-theme-d4 w3-hover-text-theme w3-ripple w3-right w3-circle" onclick="clearList()"><i class="fa fa-trash"></i></button>
             <button id="btnAdd" class="btnCircle w3-btn w3-theme-d4 w3-hover-text-theme w3-right w3-circle" onclick="getInput()" ><i class="fa fa-plus" aria-hidden="true"></i></button>  
-        </div>
+        </div> //button container end.
         
-          <!--****HEADING***-->  
-            <h1 class="w3-center w3-margin-top w3-margin-bottom w3-theme-d5 w3-round-xxlarge"><span class="w3-theme-l1" style="background-clip: text;
-              -webkit-background-clip: text;"><span class="fontStuffClip" >My ToDo List</span></span></h1>
+    <!--****HEADING***-->  
+        <h1 class="w3-center w3-margin-top w3-margin-bottom w3-theme-d5 w3-round-xxlarge"><span class="w3-theme-l1" style="background-clip: text;
+                -webkit-background-clip: text;"><span class="fontStuffClip" >My ToDo List</span></span></h1>
           
-          <!--***TEXT INPUT AND CONTAINER FOR CHECKBOXES-->
-            <form class="w3-container" id="myList" >
-                <input id="inpTask" class="w3-input w3-round-xxlarge w3-border w3-border-theme" type="text">
-                <fieldset id="fldHoldList">
-                  
-                </fieldset> <!--creates a space for checkboxes-->
-                <p></p>
-            </form>  
-      </div>
+    <!--***TEXT INPUT AND CONTAINER FOR CHECKBOXES-->
+        <form class="w3-container" id="myList" >
+            <input id="inpTask" class="w3-input w3-round-xxlarge w3-border w3-border-theme" type="text">
+            <fieldset id="fldHoldList">
+              
+            </fieldset> <!--creates a space for checkboxes-->
+            <p></p>
+        </form>  
+      </div> //end container "half"
       <div class="w3-quarter w3-container w3-hide-small" ></div>
     </div>                                                                                           <!--right column-->      
         
@@ -125,9 +124,9 @@
             </ul>
           </div>
           
-          <footer class="w3-container"><p></p>
+            <footer class="w3-container"><p></p></footer>
           </div>
-        </div>
+        </div> //end modal
 
   </body>
 </html>
@@ -140,12 +139,10 @@
 // Mimics btnAdd click. Enters info
 inpTask.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
-        event.preventDefault();
+        //event.preventDefault();
         document.getElementById("btnAdd").click();
     }
 });
-
-
 
 //Adds gray class to list item when checked. 
 document.getElementById("fldHoldList").addEventListener("click", function() {
@@ -159,7 +156,8 @@ document.getElementById("fldHoldList").addEventListener("click", function() {
 
 //***RECURRING DAYS***
 
-document.getElementById("btnDropDown").addEventListener("click", function(){
+document.getElementById("btnDropDown").addEventListener("click", dropDown);
+/*document.getElementById("btnDropDown").addEventListener("click", function(){
  
   var x = document.getElementById("lstDays");
   var y = document.getElementById("lstSettings");
@@ -172,7 +170,7 @@ document.getElementById("btnDropDown").addEventListener("click", function(){
         x.className = x.className.replace(" w3-show", "");
     }
     
-});
+});*/
 
 document.body.addEventListener("click", function(event){
   
@@ -181,20 +179,14 @@ document.body.addEventListener("click", function(event){
   //var y = document.getElementById("buttonContainer");
   var rect = x.getBoundingClientRect();
   var rectb = y.getBoundingClientRect();
-   if (x.classList.contains("w3-show")){
+  
+  if (x.classList.contains("w3-show")){
     if(event.clientX > rect.right || event.clientX < rect.left || event.clientY < rectb.top || event.clientY > rect.bottom){
       
           x.className=x.className.replace("w3-show", "");
-} 
+    } 
   }
-
-  
-  //if (x.className.indexOf("w3-show") > -1) {
-  // event.preventDefault;    
-  
-  //}
 });
-
 
 //Opens modal to selected day when day is clicked
 document.getElementById("lstDays").addEventListener("click", function() {
@@ -218,7 +210,8 @@ document.getElementById("btnVoice").addEventListener("click", function() {
 //***SETTINGS***/
 
 //Saves color choice
-document.getElementById("btnSave").addEventListener("click", function() {
+document.getElementById("btnSave").addEventListener("click", saveColor);
+/*document.getElementById("btnSave").addEventListener("click", function() {
   
   var y = document.getElementById("lstColor")
   var x = document.getElementById("lstSettings");
@@ -231,41 +224,51 @@ document.getElementById("btnSave").addEventListener("click", function() {
   }
   y.className = y.className.replace(" w3-show", "");
   x.className = x.className.replace(" w3-show", "");
-});
+});*/
+
 
 //Closes color dialog without saving
-document.getElementById("btnClose").addEventListener("click", function() {
+document.getElementById("btnClose").addEventListener("click", closeColor);
+/*document.getElementById("btnClose").addEventListener("click", function() {
   var y = document.getElementById("lstColor")
   var x = document.getElementById("lstSettings");
   
   y.className = y.className.replace(" w3-show", "");
   x.className = x.className.replace("w3-show", "");                 
-});
+});*/
 
 
-//Creates confetti
-document.getElementById('fldHoldList').onclick = event => {
-  
+//Activates confetti
+document.getElementById("fldHoldList").addEventListener("click", function(){
+  activateConfetti(event.target); });
+//document.getElementById("fldHoldList").addEventListener("click", activateConfetti(event.target));
+/*document.getElementById('fldHoldList').onclick = event => {
+ 
   var check = event.target;
   var radio = document.getElementById("tglConfetti");
+
   if (radio.checked){
     if (check.checked == true){
-    makeConfetti(event.target);
+    
     } 
   } 
-};
+};*/
 
 //closes confetti
-document.getElementById("closeConfetti").addEventListener("click", function() {
+document.getElementById("closeConfetti").addEventListener("click", closeConfetti);
+/*document.getElementById("closeConfetti").addEventListener("click", function() {
   var y = document.getElementById("chkConfetti")
   var x = document.getElementById("lstSettings");
   
   y.className = y.className.replace(" w3-show", "");
   x.className = x.className.replace("w3-show", "");                 
-});
+});*/
 
 //toggles confetti off and on.
-document.getElementById('tglConfetti').onclick = event => {
+document.getElementById("tglConfetti").addEventListener("click", function(){
+  toggleOnOff(event.target);  });
+
+/*document.getElementById('tglConfetti').onclick = event => {
   var lblOn = document.getElementById("lblOn");
   var lblOff = document.getElementById("lblOff");
   var check = event.target;
@@ -281,13 +284,15 @@ document.getElementById('tglConfetti').onclick = event => {
   }
   
   localStorage.setItem("toggleSet", toggleSet);
-};
+};*/
 
 //Every morning at midnight, page reloads with new day
-var now = new Date();
+            
+            var now = new Date();
             var tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate()+ 1, 0, 0);
             var reloadTime = tomorrow - now;
-           
+            var timer = now + 15000
+             
             setTimeout(function(){
               
               var arrDays = JSON.parse(localStorage.getItem("days"));
