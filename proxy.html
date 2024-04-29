@@ -72,7 +72,7 @@
     <!--***RECURRING DAYS***-->  
           <div class="w3-dropdown-click w3-right" style="background-color: rgba(0, 0, 0, 0);">  <!--Creates container for dropdown-->
             <button id="btnDropDown"  class="w3-btn btnCircle w3-circle w3-theme-d4 w3-hover-text-theme w3-ripple"><i class="fa fa-repeat" aria-hidden="true"></i></button>
-            <div id="lstDays" class="w3-dropdown-content w3-bar-block w3-border" style="margin-left: -116px;">
+            <div id="lstDays" class="w3-dropdown-content w3-bar-block w3-border" style="min-width: 125px; width: 100px; margin-left: -70px">
               <option class="w3-theme-l5"  value="" disabled selected>Select a day</option> 
               <option id="Everyday"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Everyday">Everyday</option>
               <option id="Monday"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Monday">Monday</option>
@@ -158,18 +158,8 @@ document.getElementById("fldHoldList").addEventListener("click", function() {
 document.getElementById("btnDropDown").addEventListener("click", dropDown);
 
 document.body.addEventListener("click", function(event){
-  
-  var x = document.getElementById("lstDays");
-  var y =x.parentElement;
-  var rect = x.getBoundingClientRect();
-  var rectb = y.getBoundingClientRect();
-  
-  if (x.classList.contains("w3-show")){
-    if(event.clientX > rect.right || event.clientX < rect.left || event.clientY < rectb.top || event.clientY > rect.bottom){
-      
-          x.className=x.className.replace("w3-show", "");
-    } 
-  }
+ 
+  closeDialog(event);
 });
 
 //Opens modal to selected day when day is clicked
