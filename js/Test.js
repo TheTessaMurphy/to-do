@@ -250,3 +250,20 @@ function clearList() {
         }
     } 
 }
+
+function closeDialog(ev) {
+    
+    const el = document.querySelectorAll(".w3-show");
+  
+    for (i=0; i< el.length; i++){
+      
+      var elp = el[i].parentElement;
+      var rect = el[i].getBoundingClientRect();
+      var rectp = elp.getBoundingClientRect();
+  
+      if(ev.clientX > rect.right || ev.clientX < rect.left || ev.clientY < rectp.top || ev.clientY > rect.bottom){
+        el[i].className=el[i].className.replace("w3-show", "");
+      } 
+  
+    }
+}
