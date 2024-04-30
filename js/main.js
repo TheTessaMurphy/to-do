@@ -12,6 +12,7 @@ function Main() {
         const days = [];   
         localStorage.setItem("days", JSON.stringify(days));
         arrDays = localStorage.getItem("days");
+        
     } 
     
     if(!Array.isArray(arrTrans)){
@@ -51,6 +52,7 @@ function loadList(arrDays, arrTrans) {
             let obj = arrDays[i];
             if(obj["day"] == "Everyday" || obj["day"] == nd){
                 td.push(obj)
+                
             } 
         }
         //If arrTrans isn't empty, concantenate td and arrTrans.
@@ -247,4 +249,79 @@ function clearList() {
             fldHoldList.removeChild(linebreak[i]);
         }
     } 
+
+
 }
+
+function closeDialog(ev, elt) {
+
+  
+ 
+    if(elt == "setConfetti"){
+      x = document.getElementById("chkConfetti")
+    } else if (elt == "btnSettings"){
+      x = document.getElementById("lstSettings")
+    } else if (elt == "btnDropDown"){
+      x = document.getElementById("lstDays")
+    } else if (elt == "colors"){
+      x = document.getElementById("lstColor")
+    }
+  
+  //var x = document.getElementById("chkConfetti");	  
+  var y=x.parentElement;	
+  var rect = x.getBoundingClientRect();	
+  var rectb = y.getBoundingClientRect();	
+  
+  if (x.classList.contains("w3-show")){	
+      //alert(ev.clientX + " " + rectb.left) 
+      if(ev.clientX > rect.right || ev.clientX < rect.left || ev.clientY < rectb.top || ev.clientY > rect.bottom){	
+          
+          if(x.id == "chkConfetti"){
+              closeConfetti();
+          } else if (x.id == "lstSettings"){
+              dropSettings()
+          } else if (x.id == "lstDays"){
+              dropDown();
+  
+          } else if (x.id = "lstColor") {
+              closeColor();
+          }
+          
+    } 	
+  }
+  
+   
+      /* switch(evid) {
+      case "setConfetti":
+      var el = "chkConfetti"
+      break;
+      case "colors":
+        var el = "lstColor"
+        break;
+      default:
+        // code block
+    } 
+     
+     //const el = document.querySelectorAll(".w3-show");
+      //ell = el.length + 1;
+    
+     var elt=document.getElementById(evid) 
+     
+        var elp = elt.parentElement;
+        var rect = elt.getBoundingClientRect();
+        var rectp = elp.getBoundingClientRect();
+        //var rectc = elc.getBoundingClientRect();
+        
+          
+        
+          
+        
+        
+  
+       if(ev.clientX > rect.right || ev.clientX < rect.left || ev.clientY < rectp.top || ev.clientY > rect.bottom){
+          
+          elt.className=elt.className.replace("w3-show", "");
+        } */
+       
+      
+  }

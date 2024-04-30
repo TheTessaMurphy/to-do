@@ -9,8 +9,10 @@ function dropSettings() {
             
         } else { 
             var x = document.getElementById("lstSettings");
-            //var y = document.getElementById("lstColor");
-            //y.className = y.className.replace(" w3-show", "");
+            var y = document.getElementById("lstColor");
+            var z = document.getElementById("chkConfetti")
+            z.className = x.className.replace(" w3-show", "");
+            y.className = y.className.replace(" w3-show", "");
             x.className = x.className.replace(" w3-show", "");
            
         }
