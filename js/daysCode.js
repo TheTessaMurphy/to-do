@@ -95,12 +95,14 @@ var dt = new Date().toLocaleDateString();
 
 function dropDown() {
     var x = document.getElementById("lstDays");
+    var y = document.getElementById("lstSettings");
     if (x.className.indexOf("w3-show") == -1) {
       x.className += " w3-show";
+      y.className = y.className.replace(" w3-show", "");
     } else { 
         var x = document.getElementById("lstDays");
         x.className = x.className.replace(" w3-show", "");
     }
   }
 
-  
+ 

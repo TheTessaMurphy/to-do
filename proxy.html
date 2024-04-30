@@ -6,7 +6,7 @@
 
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link id="styles" rel="stylesheet" href="css/blueColorThemes.css">
+        <link id="styles" rel="stylesheet" href="css/boldColorThemes.css">
         <link rel="stylesheet" href="css/toDoStyles.css">
         <link id="styles" rel="stylesheet" href="css/toggle.css">
                 
@@ -31,7 +31,7 @@
     <!***SETTINGS***-->  
           <div class="w3-dropdown-click w3-right" style="background-color: rgba(0, 0, 0, 0);">  <!--Creates container for dropdown-->
             <button id="btnSettings" onclick="dropSettings()" class="w3-btn btnCircle w3-circle w3-theme-d4 w3-hover-text-theme w3-ripple">
-              <i class="fa fa-cog" aria-hidden="true"></i></button>
+              <i id="btnSettings" class="fa fa-cog" aria-hidden="true"></i></button>
             <div id="lstSettings" class="w3-dropdown-content w3-bar-block w3-border" style="min-width: 80px; width: 80px; margin-left: -10px;">
               <option id="about" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="about">About</option>
               <option id="how-To" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="how-to">How-To</option>
@@ -39,14 +39,14 @@
       <!--***Confetti***-->
               <div class="w3-dropdown-click">
                 <option onclick="dropConfetti()" id="setConfetti" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="confetti">Confetti</option>
-                <div id="chkConfetti" class=" w3-container w3-dropdown-content w3-bar-block w3-border w3-theme-l5" style="min-width: 200px; width: 100px; margin-left: -110px">
+                <div id="chkConfetti" class=" w3-container w3-dropdown-content w3-bar-block w3-border w3-theme-l5" style="min-width: 200px; width: 100px; "">
                 <p></p>
                 <header class="w3-container">
                 <button id="closeConfetti" class="btnCircle w3-btn w3-circle w3-theme-d4 w3-ripple w3-medium w3-display-topright">&times;</button>  
               </header><br><br>
               
               <label id="lblOff">Off</label><label class="switch ">
-                  <input id="tglConfetti" type="checkbox" checked class="w3-check w3-theme-d5">
+                  <input id="tglConfetti" type="checkbox" checked class="w3-check w3-theme-d5" value ="toggle">
                   <span class="slider round"></span>
                 </label><label id="lblOn">On</label><br><br>
               </div>
@@ -54,10 +54,11 @@
       <!--***Colors***-->  
               <div class="w3-dropdown-click">
                 <option onclick="dropColor()" id="colors" class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="colors">Colors</option>
-                <div id="lstColor" class="w3-dropdown-content w3-bar-block w3-border w3-theme-l5" style="min-width: 200px; width: 100px; margin-left: -110px">
+                <div id="lstColor" class="w3-dropdown-content w3-bar-block w3-border w3-theme-l5" style="min-width: 200px; width: 100px; ">
                   <input id="rdBlue" class="w3-radio" type="radio" name="color" value="blue" onclick="getColor(value)" checked>Blue<br>
                   <input id="rdPeach" class="w3-radio" type="radio" name="color" value="peach" onclick="getColor(value)">Peach<br>
                   <input id="rdGold" class="w3-radio" type="radio" name="color" value="gold" onclick="getColor(value)">Goldenrod<br>
+                  <input id="rdBold" class="w3-radio" type="radio" name="color" value="bold" onclick="getColor(value)">Bold<br>
                   <p></p>
                   <div class="w3-center">
                     <button id="btnSave" class="w3-btn w3-ripple  w3-theme-d4 w3-round-xxlarge w3-small">save</button>
@@ -71,7 +72,7 @@
 
     <!--***RECURRING DAYS***-->  
           <div class="w3-dropdown-click w3-right" style="background-color: rgba(0, 0, 0, 0);">  <!--Creates container for dropdown-->
-            <button id="btnDropDown"  class="w3-btn btnCircle w3-circle w3-theme-d4 w3-hover-text-theme w3-ripple"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+            <button id="btnDropDown"  class="w3-btn btnCircle w3-circle w3-theme-d4 w3-hover-text-theme w3-ripple"><i id="btnDropDown" class="fa fa-repeat" aria-hidden="true"></i></button>
             <div id="lstDays" class="w3-dropdown-content w3-bar-block w3-border" style="min-width: 125px; width: 100px; margin-left: -70px">
               <option class="w3-theme-l5"  value="" disabled selected>Select a day</option> 
               <option id="Everyday"class="w3-theme-l5 w3-hover-theme w3-hover-text-theme" value="Everyday">Everyday</option>
@@ -138,9 +139,17 @@
 // Mimics btnAdd click. Enters info
 inpTask.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
-        //event.preventDefault();
+        event.preventDefault();
         document.getElementById("btnAdd").click();
     }
+});
+
+document.body.addEventListener("click", function(event){
+  //event.prevent.default
+ 
+  
+  closeDialog( event, event.target.id);
+ 
 });
 
 //Adds gray class to list item when checked. 
@@ -157,10 +166,7 @@ document.getElementById("fldHoldList").addEventListener("click", function() {
 
 document.getElementById("btnDropDown").addEventListener("click", dropDown);
 
-document.body.addEventListener("click", function(event){
- 
-  closeDialog(event);
-});
+
 
 //Opens modal to selected day when day is clicked
 document.getElementById("lstDays").addEventListener("click", function() {
