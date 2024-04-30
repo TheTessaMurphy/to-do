@@ -251,19 +251,75 @@ function clearList() {
     } 
 }
 
-function closeDialog(ev) {
-    
-    const el = document.querySelectorAll(".w3-show");
+function closeDialog(ev, elt) {
+
   
-    for (i=0; i< el.length; i++){
-      
-      var elp = el[i].parentElement;
-      var rect = el[i].getBoundingClientRect();
+ 
+  if(elt == "setConfetti"){
+    x = document.getElementById("chkConfetti")
+  } else if (elt == "btnSettings"){
+    x = document.getElementById("lstSettings")
+  } else if (elt == "btnDropDown"){
+    x = document.getElementById("lstDays")
+  } else if (elt == "colors"){
+    x = document.getElementById("lstColor")
+  }
+
+//var x = document.getElementById("chkConfetti");	  
+var y=x.parentElement;	
+var rect = x.getBoundingClientRect();	
+var rectb = y.getBoundingClientRect();	
+
+if (x.classList.contains("w3-show")){	
+    //alert(ev.clientX + " " + rectb.left) 
+    if(ev.clientX > rect.right || ev.clientX < rect.left || ev.clientY < rectb.top || ev.clientY > rect.bottom){	
+        
+        if(x.id == "chkConfetti"){
+            closeConfetti();
+        } else if (x.id == "lstSettings"){
+            dropSettings()
+        } else if (x.id == "lstDays"){
+            dropDown();
+
+        } else if (x.id = "lstColor") {
+            closeColor();
+        }
+        
+  } 	
+}
+
+ 
+    /* switch(evid) {
+    case "setConfetti":
+    var el = "chkConfetti"
+    break;
+    case "colors":
+      var el = "lstColor"
+      break;
+    default:
+      // code block
+  } 
+   
+   //const el = document.querySelectorAll(".w3-show");
+    //ell = el.length + 1;
+  
+   var elt=document.getElementById(evid) 
+   
+      var elp = elt.parentElement;
+      var rect = elt.getBoundingClientRect();
       var rectp = elp.getBoundingClientRect();
-  
-      if(ev.clientX > rect.right || ev.clientX < rect.left || ev.clientY < rectp.top || ev.clientY > rect.bottom){
-        el[i].className=el[i].className.replace("w3-show", "");
-      } 
-  
-    }
+      //var rectc = elc.getBoundingClientRect();
+      
+        
+      
+        
+      
+      
+
+     if(ev.clientX > rect.right || ev.clientX < rect.left || ev.clientY < rectp.top || ev.clientY > rect.bottom){
+        
+        elt.className=elt.className.replace("w3-show", "");
+      } */
+     
+    
 }
