@@ -24,9 +24,9 @@ function makeConfetti(element) {
 function fireConfetti(x, y) {
  
 	confetti({
-    startVelocity: 10,
-    scalar: .5,
-    angle: 30,//randomInRange(1, 1),
+    startVelocity: 12,
+    scalar: .6,
+    angle: 70,//randomInRange(1, 1),
     //spread: randomInRange(50, 70),
     particleCount: 50,
     origin: {
