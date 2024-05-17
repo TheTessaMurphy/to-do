@@ -22,7 +22,7 @@
       
 
     <!--***MAIN BODY***-->
-
+<div id="output"></div>
     <div class="w3-row w3-border-0 ">
       <div class="w3-quarter w3-container w3-hide-small" ></div>
       <div class=" w3-theme-l5 w3-half w3-container w3-padding-16 w3-card-4">
@@ -208,25 +208,30 @@ document.getElementById("tglConfetti").addEventListener("click", function(){
     //***TIMEOUT***//  
     //Every morning at midnight, page reloads with new day
                 
-    var now = new Date();
-    var tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate()+ 1, 0, 0);
-    var reloadTime = tomorrow - now;
-    var timer = now + 15000
-    if (reloadTime < 0) {
-        reloadTime += 86400000; // it's after midnight, try tomorrow.
-    }
-    setTimeout(function(){
+    setInterval(function () {
+                 
+      var d = new Date();
+      var now = Math.round(Date.now()/60000); 
+      var timer = Math.round(d.setHours(14, 0, 0) /60000 );
+      var timer1 = Math.round(d.setHours(14, 1, 0) /60000 );
       
-      var arrDays = JSON.parse(localStorage.getItem("days"));
+      if (now >= timer && now < timer1) {
+        
+        var arrDays = JSON.parse(localStorage.getItem("days"));
       
-      for(var i=0; i < arrDays.length; i++){
-        arrDays[i].checked = "false";
+              for(var i=0; i < arrDays.length; i++){
+                  arrDays[i].checked = "false";
+              }
+      
+              localStorage.setItem("days", JSON.stringify(arrDays));  
+              location.reload(true);
       }
-      
-      localStorage.setItem("days", JSON.stringify(arrDays));  
-      location.reload(true);
+                           
+    }, 30000 );
 
-    }, reloadTime);
+
+
+
 
   </script>
   </body>

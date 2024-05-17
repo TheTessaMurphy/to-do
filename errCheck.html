@@ -5,68 +5,82 @@
     <script type="text/javascript" src="js/Test.js"></script>   
     </head>
     <body >
-        <button id="button">click me</button>
+        <button id="button" onclick="setTimer()">click me</button>
 
-        <div id="printOut">
-
-            
-        </div>
+        <div id="output"></div>
         <script>
+
+
+function getTomorrow() {
+    let d = new Date();
+    let nd = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1, 0, 30, 0, 0);
+    let now = Date.parse(d);
+    let tomorrow = Date.parse(nd);
+    let reloadTime = tomorrow - now;
+    var timer = 2000
+
+    setTimeout(function(){
+      
+      var arrDays = JSON.parse(localStorage.getItem("days"));
+      
+      for(var i=0; i < arrDays.length; i++){
+        arrDays[i].checked = "false";
+      }
+      
+      localStorage.setItem("days", JSON.stringify(arrDays));  
+      location.reload(true);
+
+    }, reloadTime);
+}
+var d = new Date();
+var setTime = d.setHours(11, 54, 0) - d.getHours();
+
 
 function $(x) {
   return document.getElementById(x);
 }
 
-localStorage.removeItem("sun");
-//localStorage.removeItem("nights");
 
-var saySomething = $("printOut")
-
-   
-var arrDays = JSON.parse(localStorage.getItem("sun"));
-    var arrTrans = JSON.parse(localStorage.getItem("night"))
- 
-    //Check that Arrays exist. If absent, create them.
-    if(!Array.isArray(arrDays)){
-            
-        const sun = [];   
-        localStorage.setItem("sun", JSON.stringify(sun));
-        arrDays = localStorage.getItem("sun");
-        
-    } 
+    //seconds = new Date().getTime();
     
-    if(!Array.isArray(arrTrans)){
-        
-        const night = [];   
-        localStorage.setItem("night", JSON.stringify(night));
-        var arrTrans = JSON.parse(localStorage.getItem("night")) 
-        
-    } 
-    
-    //Set focus and call loadList to create list on page
-    //document.getElementById("inpTask").focus();
-    loadList(arrDays, arrTrans);   
+setInterval(function () {
+                 
+var d = new Date();
+var now = Math.round(Date.now()/60000); 
+var timer = Math.round(d.setHours(15, 10, 0) /60000 );
+var timer1 = Math.round(d.setHours(14, 55, 0) /60000 );
 
+if (now == timer) {
+    var arrDays = JSON.parse(localStorage.getItem("days"));
 
-function loadList(arrDays, arrTrans) {
-    
- alert("here " + JSON.stringify(arrDays))  
-   
-   
+        for(var i=0; i < arrDays.length; i++){
+            arrDays[i].checked = "false";
+        }
+
+        localStorage.setItem("days", JSON.stringify(arrDays));  
+        location.reload(true);
 }
-
-/*document.getElementById("button").addEventListener("click", function() {
-  
-  hello();
-});
+          
+    }, 30000 );
 
 
-function hello() {
 
-document.getElementById('button').innerHTML="hello"
+    /*var d = new Date();
+    nowTime = d.getTime();
+    var loadTime = d.setHours(12, 25, 0) - nowTime;
 
-}*/
-document.getElementById("button").addEventListener("click",hello);    
-    </script>
+    setTimeout(function(){
+        var arrDays = JSON.parse(localStorage.getItem("days"));
+
+        for(var i=0; i < arrDays.length; i++){
+            arrDays[i].checked = "false";
+        }
+
+        localStorage.setItem("days", JSON.stringify(arrDays));  
+        location.reload(true);
+        location.reload(true);
+}, loadTime);
+*/
+</script>
     </body>
     <html>
