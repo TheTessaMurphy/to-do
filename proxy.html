@@ -212,24 +212,31 @@ document.getElementById("tglConfetti").addEventListener("click", function(){
                  
       var d = new Date();
       var now = Math.round(Date.now()/60000); 
-      var timer = Math.round(d.setHours(14, 0, 0) /60000 );
-      var timer1 = Math.round(d.setHours(14, 1, 0) /60000 );
+      var timer = Math.round(d.setHours(1, 30, 0) /60000 );
+      var timer1 = Math.round(d.setHours(2, 30, 0) /60000 );
       
       if (now >= timer && now < timer1) {
         
-        var arrDays = JSON.parse(localStorage.getItem("days"));
-      
-              for(var i=0; i < arrDays.length; i++){
-                  arrDays[i].checked = "false";
-              }
-      
-              localStorage.setItem("days", JSON.stringify(arrDays));  
-              location.reload(true);
+        uncheckDays();
+        window.location.reload();
+        var today = new Date().toLocaleDateString('en-us', { weekday:"long"});
+        localStorage.setItem("today", today);
       }
                            
-    }, 30000 );
+    }, 3600000 ); //3600000
 
+function uncheckDays(){
+  
+  var arrDays = JSON.parse(localStorage.getItem("days"));
+      
+      for(var i=0; i < arrDays.length; i++){
+          arrDays[i].checked = "false";
+      }
 
+      localStorage.setItem("days", JSON.stringify(arrDays));  
+      
+  
+}
 
 
 
